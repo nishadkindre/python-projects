@@ -289,7 +289,7 @@ class Module_ :
         sys.stdout = old_stdout 
 
         # refer : https://stackoverflow.com/questions/3906232/python-get-the-print-output-in-an-exec-statement
-        #! not another solution found yet...
+        #! no other solution found yet...
 
         # exec(f"import {self.name}")
         # module_info = self.name.__doc__
