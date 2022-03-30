@@ -3,15 +3,15 @@
 
 class Module:
     '''
-    We construct a 'Module' class with methods defined under it to return the data about the module,classes under it,methods under the classes
-    Using a combine object(preferably a zip object) containing all the data to be returned using the methods hereby defined
+    Constructing a 'Module' class with methods defined under it to return the data about the module,classes under it,methods under the classes
+    Using a combine object(preferably a zip object converted into an iterable) containing all the data to be returned using the methods hereby defined
     '''
 
     l = ":"*30
 
     def __init__(self , name , data):
         '''
-        Necessary to give the module name and the module data during object instantiation
+        Necessary to give the module name(str) and the module data(object) during object instantiation
         '''
         self.name = name
         self.Name = name.capitalize()
@@ -195,15 +195,15 @@ class Module:
 
 class Module_ :
     '''
-    We construct a 'Module_' class with methods defined under it to return the data about the module,and the methods under it
-    Using a combine object(preferably a zip object) containing all the data to be returned using the methods hereby defined
+    Constructing a 'Module_' class with methods defined under it to return the data about the module,and the methods under it
+    Using a combine object(preferably a zip object converted into an iterable) containing all the data to be returned using the methods hereby defined
     '''
 
     l = "\n" + ":"*30 + "\n"
 
     def __init__(self , name , data) :
         '''
-        Necessary to give the module name and the module data during object instantiation
+        Necessary to give the module name(str) and the module data(object) during object instantiation
         '''
         self.name = name
         self.Name = name.capitalize()
