@@ -14,16 +14,16 @@ class Module:
         Necessary to give the module name and the module data during object instantiation
         '''
         self.name = name
-        self.name_1 = name.capitalize()
+        self.Name = name.capitalize()
         self.data = data
 
 
     def getModuleInfo(self) :
         f'''
-        Returns the information about the {self.name_1} module.
+        Returns the information about the {self.Name} module.
         '''
         print(self.l)
-        print(f"{self.name_1} Module Info : ")
+        print(f"{self.Name} Module Info : ")
         print(self.l)
         exec(f"import {self.name}\
             \nprint({self.name}.__doc__)")
@@ -31,10 +31,10 @@ class Module:
 
     def getClassesList(self):
         f'''
-        Returns All The Classes defined under {self.name_1} Module.
+        Returns All The Classes defined under {self.Name} Module.
         '''
         print(self.l)
-        print(f"{self.name_1} Module Classes :")
+        print(f"{self.Name} Module Classes :")
         print(self.l)
         for i,j in enumerate(self.data,1) :
             print(i,j[0])
@@ -42,7 +42,7 @@ class Module:
 
     def getClassInfo(self) :
         f'''
-        Returns the information about the Specific Class of {self.name_1} module ,
+        Returns the information about the Specific Class of {self.Name} module ,
         using the input number given by the user.
         '''
         print(self.l)
@@ -74,7 +74,7 @@ class Module:
 
     def getClassMethodsList(self) :
         f'''
-        Returns All the Methods Under specific Class of {self.name_1} Module.
+        Returns All the Methods Under specific Class of {self.Name} Module.
         '''
 
         # refer : https://devnote.in/how-to-call-one-method-from-another-within-the-same-class-in-python/
@@ -96,7 +96,7 @@ class Module:
 
     def getClassMethodInfo(self) :
             f'''
-            Returns the information about the specific method of any {self.name_1} class,
+            Returns the information about the specific method of any {self.Name} class,
             using the input number given by the user.    
             '''        
             try :
@@ -125,7 +125,7 @@ class Module:
 
     def getAll_ClassesMethods_ListsInfo(self) :  
         f'''
-        Returns All Classes and Methods Under {self.name_1} module it along with their information.
+        Returns All Classes and Methods Under {self.Name} module it along with their information.
         '''
 
         for i in range(len(self.data)):
@@ -146,11 +146,11 @@ class Module:
         while True :
             print("\033[1;34m")
             print(self.l)
-            print(f"Get {(self.name_1)} Module Info")
+            print(f"Get {(self.Name)} Module Info")
             print(self.l)
             print("\033[1;36m")
-            a = input(f' Enter 1 : {self.name_1} Module Info          \
-                      \n Enter 2 : Classes Under {self.name_1} Module \
+            a = input(f' Enter 1 : {self.Name} Module Info          \
+                      \n Enter 2 : Classes Under {self.Name} Module \
                       \n Enter 3 : Get Class Info                     \
                       \n Enter 4 : Get Class Methods List             \
                       \n Enter 5 : Get Class Method Info              \
@@ -189,6 +189,7 @@ class Module:
             else :
                 print("\033[1;31m")
                 print("\n***Please Enter Number within range***\n")    
+
 
 #? for modules with only methods
 
