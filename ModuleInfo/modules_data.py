@@ -221,7 +221,6 @@ collections_data = tuple(a)
 
 #? FOR DATETIME MODULE :
 
-
 class date_:
     """Concrete date type.
 
@@ -281,8 +280,6 @@ class timedelta_:
     """
     pass
 
-
-
 class tzinfo_:
     """Abstract base class for time zone info classes.
 
@@ -338,7 +335,6 @@ class time_:
     hour, minute, second, microsecond, tzinfo, fold
 
     """ 
-
 
 import datetime 
 
