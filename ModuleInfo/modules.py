@@ -17,6 +17,3 @@ time = Module_("time" , time_data)
 pandas = Module_("pandas" , pandas_data)
 
 os = Module_("os" , os_data)
-
-if __name__ == '__main__' :
-    schedule.run()
