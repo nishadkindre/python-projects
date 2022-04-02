@@ -1,3 +1,8 @@
+'''
+Contains module data 
+Making individual module objects to include their respective data used for making module objects from the respective classes from module_constructor.
+'''
+
 # ------------------------------------------------------------------------------------------------------------------------------------ 
 #? FOR TIME MODULE :
 import time
