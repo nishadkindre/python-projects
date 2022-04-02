@@ -1,3 +1,7 @@
+'''
+Making module objects using the Classes from module_constructor by providing the module name as a string and respective module_data object from modules_data.
+'''
+
 from module_constructor import *
 
 from modules_data import schedule_data , random_data , numpy_data , time_data , pandas_data , os_data , collections_data , datetime_data
