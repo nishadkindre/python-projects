@@ -1,2 +1,2 @@
 # python-projects
-better than the simple ones
+Better than the simple ones
