@@ -1,3 +1,6 @@
+'''
+To construct Individual module objects in order to display their data.
+'''
 
 #? Constructing a class used to create module info objects with it 
 
@@ -9,7 +12,7 @@ class Module:
     Using a combine object(preferably a zip object) containing all the data to be returned using the methods hereby defined.
     '''
 
-    def __init__(self , name , data):
+    def __init__(self , name : str , data : object):
         '''
         Necessary to give the module name and the module data during object instantiation.
         '''
@@ -48,17 +51,20 @@ class Module:
         print(X)
         print("Enter Class Number : ")
         try : 
-            cc = input()     
-            c = int(cc)
+            number = input()     
+            c = int(number)
             print(X)
+
             if c in range(1,len(self.data) + 1):
                 print("Class",self.data[c-1][0] , "\n")
                 print("Info : \n",self.data[c-1][1] , "\n")
                 print("-"*50)
                 return c
+
             elif c < 0 :
                 print("\033[1;31m")
                 print("***Please Enter Only Positive Numbers***")
+
             else :
                 print("\033[1;31m")
                 print("***Please Enter Number within range***")
@@ -203,8 +209,7 @@ class Module_ :
     Using a combine object(preferably a zip object) containing all the data to be returned using the methods hereby defined.
     '''
 
-
-    def __init__(self , name , data) :
+    def __init__(self , name : str , data : object) :
         '''
         Necessary to give the module name and the module data during object instantiation.
         '''
@@ -235,16 +240,16 @@ class Module_ :
             print(i,j[0])
             
 
-    def method_info_(self , c) :
+    def method_info_(self , number : int) :
         f'''
         Returns the information about the {self.Name} module method ,
         using the input number given by the user as an argument while calling the function.
 
         Seperate Method made for use in the method_info() & all_info() method.
         '''
-        self.c = c
-        print(self.data[self.c-1][0] , "Method -->")
-        print(self.data[self.c-1][1])
+        self.number = number
+        print(self.data[self.number-1][0] , "Method -->")
+        print(self.data[self.number-1][1])
         print("-"*50)
 
 
@@ -254,9 +259,9 @@ class Module_ :
         '''
         print(X)
         try :        
-                c = int(input("Enter Method number : "))
+                number = int(input("Enter Method number : "))
                 print(X)
-                self.method_info_(c)
+                self.method_info_(number)
 
         except ValueError :
             print("\033[1;31m")
