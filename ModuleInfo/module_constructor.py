@@ -3,7 +3,12 @@
 
 #? Constructing a class used to create module info objects with it 
 
-X = "\n" + ":"*30 + "\n"
+X = ":"*30
+red = "\033[1;31m"
+blue = "\033[1;34m"
+pink = "\033[1;35m"
+green = "\033[1;32m"
+cyan = "\033[1;36m"
 
 class Module:
     '''Constructing a 'Module' class 
@@ -46,7 +51,6 @@ class Module:
             number = input()     
             c = int(number)
             print(X)
-
             if c in range(1, len(self.data) + 1):
                 print("Class", self.data[c-1][0], "\n")
                 print("Info : \n", self.data[c-1][1], "\n")
@@ -54,15 +58,15 @@ class Module:
                 return c
 
             elif c < 0 :
-                print("\033[1;31m")
+                print(red)
                 print("***Please Enter Only Positive Numbers***")
 
             else :
-                print("\033[1;31m")
+                print(red)
                 print("***Please Enter Number within range***")
 
         except ValueError:
-            print("\033[1;31m")
+            print(red)
             print("***Please Enter In Number Format Only***")
 
         else :
@@ -71,8 +75,8 @@ class Module:
 
     def class_method_list(self) :
         f'''Returns All the Methods Under specific Class of {self.Name} Module.'''
-        # refer : https://devnote.in/how-to-call-one-method-from-another-within-the-same-class-in-python/
         
+        # refer : https://devnote.in/how-to-call-one-method-from-another-within-the-same-class-in-python/
         self.classes_list()
         a = self.class_info()
         try :         
@@ -83,14 +87,14 @@ class Module:
             print(X)
 
         except Exception:
-            print("\033[1;31m")
+            print(red)
             print(Exception)
 
         else :
             return a
 
     def class_method_info(self) :
-        f'''Returns the information about the specific method of any class under {self.Name} Module,
+        f'''Returns the information about the specific method of any class under {self.name} Module,
         Using the input number given by the user.    
         '''        
         try :
@@ -100,21 +104,20 @@ class Module:
             ee = input()
             e = int(ee)
             print(X)
-
             try :
                 if len(self.data[d-1][3])+1 > e > 0 :
                     print("="*15,"\n*",self.data[d-1][2][e-1], "method : \n")  # returns method name
                     print(self.data[d-1][3][e-1])  # returns method info
                 else :
-                    print("\033[1;31m")
+                    print(red)
                     print('***Please Enter A Positive Number within range***') 
 
             except  :
-                print("\033[1;31m")
+                print(red)
                 print("***Enter Correct Class Number to Proceed***")
 
         except ValueError :
-            print("\033[1;31m")
+            print(red)
             print("\t***Please Enter In Number Format Only***")
 
     def all_info(self) :  
@@ -135,11 +138,11 @@ class Module:
     def run(self) :
         '''Run'''
         while True :
-            print("\033[1;34m")
+            print(blue)
             print(X)
             print(f"Get {(self.Name)} Module Info")
             print(X)
-            print("\033[1;36m")
+            print(cyan)
             a = input(f' Enter 1 : {self.Name} Module Info           \
                       \n Enter 2 : Classes Under {self.Name} Module  \
                       \n Enter 3 : Get Class Info                    \
@@ -168,24 +171,24 @@ class Module:
                 self.all_info()
 
             elif a == "7" :
-                print("\033[1;32m")
+                print(green)
                 print("Thank You!")
-                print(X)
                 break
 
             elif all(x.isdigit() for x in a) is False :
-                print("\033[1;31m")
+                print(red)
                 print("***Please Enter In Number Format***")
 
             else :
-                print("\033[1;31m")
+                print(red)
                 print("***Please Enter Number within range***")    
 
 #? For modules with only methods
 
 class Module_ :
-    '''
-    Constructing a 'Module_' class with methods defined under it to return the data about the module,and the methods under it.
+    '''Constructing a 'Module_' class 
+    
+    With methods defined under it to return the data about the module,and the methods under it.
     Using a combine object(preferably a zip object) containing all the data to be returned using the methods hereby defined.
     '''
 
@@ -214,9 +217,8 @@ class Module_ :
             print(i, j[0])
             
     def method_info_(self, number : int) :
-        f'''
-        Returns the information about the {self.Name} module method ,
-        using the input number given by the user as an argument while calling the function.
+        f'''Returns the information about the {self.Name} module method ,
+        Using the input number given by the user as an argument while calling the function.
 
         Seperate Method made for use in the method_info() & all_info() method.
         '''
@@ -234,17 +236,16 @@ class Module_ :
                 self.method_info_(number)
 
         except ValueError :
-            print("\033[1;31m")
+            print(red)
             print("\t***Please Enter In Number Format Only***")
 
         except IndexError :
-            print("\033[1;31m")
+            print(red)
             print("\t***Please Enter Number within range***")
 
     def export_info(self) :
-        f'''
-        To create a file with filename entered by the user 
-        A file containing info about the {self.Name} Module and it's Methods
+        f'''To create a file with filename entered by the user.
+        A file containing info about the {self.Name} Module and it's Methods.
         '''
         import io, sys
 
@@ -296,11 +297,11 @@ class Module_ :
 
     def run(self) :
         while True :
-            print("\033[1;34m")
+            print(blue)
             print(X)
             print(f"Get {self.Name} Module Info")
             print(X)
-            print("\033[1;36m")
+            print(cyan)
             a = input(f" Enter 1 : {self.Name} Module info          \
                       \n Enter 2 : Method List                      \
                       \n Enter 3 : Method Info                      \
@@ -325,15 +326,14 @@ class Module_ :
                 self.export_info()
 
             elif a == "6" :
-                print("\033[1;32m")
+                print(green)
                 print("Thank You!")
-                print(X)
                 break
 
             elif all(x.isdigit() for x in a) is False :
-                print("\033[1;31m")
+                print(red)
                 print("***Please Enter In Number Format***")
 
             else :
-                print("\033[1;31m")
+                print(red)
                 print("***Please Enter Number within range***")    
