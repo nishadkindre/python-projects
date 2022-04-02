@@ -1,52 +1,44 @@
-'''
-To construct Individual module objects in order to display their data.
-'''
+
+'''To construct Individual module objects in order to display their data.'''
 
 #? Constructing a class used to create module info objects with it 
 
 X = "\n" + ":"*30 + "\n"
 
 class Module:
-    '''
-    Constructing a 'Module' class with methods defined under it to return the data about the module,classes under it,methods under the classes.
+    '''Constructing a 'Module' class 
+    
+    With methods defined under it to return the data about the module,classes under it,methods under the classes.
     Using a combine object(preferably a zip object) containing all the data to be returned using the methods hereby defined.
     '''
 
-    def __init__(self , name : str , data : object):
-        '''
-        Necessary to give the module name and the module data during object instantiation.
-        '''
+    def __init__(self, name: str, data: object):
+        '''Necessary to give the module name and the module data during object instantiation.'''
         self.name = name
         self.Name = name.capitalize()
         self.data = data
 
-
     def module_info(self) :
-        f'''
-        Returns the information about the {self.Name} module.
-        '''
+        f'''Returns the information about the {self.Name} module.'''
         print(X)
         print(f"{self.Name} Module Info : ")
         print(X)
+
         exec(f"import {self.name}\
             \nprint({self.name}.__doc__)")
 
-
     def classes_list(self):
-        f'''
-        Returns All The Classes defined under {self.Name} Module.
-        '''
+        f'''Returns All The Classes defined under {self.Name} Module.'''
         print(X)
         print(f"{self.Name} Module Classes :")
         print(X)
-        for i,j in enumerate(self.data,1) :
-            print(i,j[0])
 
+        for i, j in enumerate(self.data, 1) :
+            print(i, j[0])
 
     def class_info(self) :
-        f'''
-        Returns the information about the Specific Class of {self.Name} module ,
-        using the input number given by the user.
+        f'''Returns the information about the Specific Class of {self.Name} module 
+        Using the input number given by the user.
         '''
         print(X)
         print("Enter Class Number : ")
@@ -55,9 +47,9 @@ class Module:
             c = int(number)
             print(X)
 
-            if c in range(1,len(self.data) + 1):
-                print("Class",self.data[c-1][0] , "\n")
-                print("Info : \n",self.data[c-1][1] , "\n")
+            if c in range(1, len(self.data) + 1):
+                print("Class", self.data[c-1][0], "\n")
+                print("Info : \n", self.data[c-1][1], "\n")
                 print("-"*50)
                 return c
 
@@ -75,16 +67,10 @@ class Module:
 
         else :
             return c
-
         # refer : https://stackoverflow.com/questions/20768856/calling-a-variable-from-one-function-to-another-function-in-python 
-        # refer : file - return_function_variable.py
-
 
     def class_method_list(self) :
-        f'''
-        Returns All the Methods Under specific Class of {self.Name} Module.
-        '''
-
+        f'''Returns All the Methods Under specific Class of {self.Name} Module.'''
         # refer : https://devnote.in/how-to-call-one-method-from-another-within-the-same-class-in-python/
         
         self.classes_list()
@@ -92,65 +78,59 @@ class Module:
         try :         
             print(X)
             print("Methods under Class %s : " %(self.data[a-1][0]))
-            for i,j in enumerate(self.data[a-1][2],1) : 
-                print(i,j)
+            for i, j in enumerate(self.data[a-1][2], 1) : 
+                print(i, j)
             print(X)
 
-        except Exception as e:
+        except Exception:
             print("\033[1;31m")
-            print(e)
+            print(Exception)
 
         else :
             return a
 
-
     def class_method_info(self) :
-            f'''
-            Returns the information about the specific method of any {self.Name} class,
-            using the input number given by the user.    
-            '''        
+        f'''Returns the information about the specific method of any class under {self.Name} Module,
+        Using the input number given by the user.    
+        '''        
+        try :
+            d = self.class_method_list()
+            print(X)
+            print("\nEnter the Method Number : ")
+            ee = input()
+            e = int(ee)
+            print(X)
+
             try :
-                d = self.class_method_list()
-                print(X)
-                print("\nEnter the Method Number : ")
-                ee = input()
-                e = int(ee)
-                print(X)
-
-                try :
-                    if len(self.data[d-1][3])+1 > e > 0 :
-                        print("="*15,"\n*",self.data[d-1][2][e-1],"method : \n")    # returns method name
-                        print(self.data[d-1][3][e-1])   # returns method info
-                    else :
-                        print("\033[1;31m")
-                        print('***Please Enter A Positive Number within range***') 
-
-                except  :
+                if len(self.data[d-1][3])+1 > e > 0 :
+                    print("="*15,"\n*",self.data[d-1][2][e-1], "method : \n")  # returns method name
+                    print(self.data[d-1][3][e-1])  # returns method info
+                else :
                     print("\033[1;31m")
-                    print("***Enter Correct Class Number to Proceed***")
+                    print('***Please Enter A Positive Number within range***') 
 
-            except ValueError :
+            except  :
                 print("\033[1;31m")
-                print("\t***Please Enter In Number Format Only***")
+                print("***Enter Correct Class Number to Proceed***")
 
+        except ValueError :
+            print("\033[1;31m")
+            print("\t***Please Enter In Number Format Only***")
 
     def all_info(self) :  
-        f'''
-        Returns All Classes and Methods Under {self.Name} module it along with their information.
-        '''
-
+        f'''Returns All Classes and Methods Under {self.Name} Module along with their information.'''
+        
         for i in range(len(self.data)):
             print(X)
-            print("Class ",self.data[i][0],":")
-            print("Info :",self.data[i][1])
+            print("Class ", self.data[i][0],":")
+            print("Info :", self.data[i][1])
             print(X)
-            print("Methods Under Class",self.data[i][0],":")
+            print("Methods Under Class", self.data[i][0], ":")
 
             for e in range(len(self.data[i][2])) :
-                print("="*15,"\n*",e + 1,self.data[i][2][e],"method : \n")    # returns method name
-                print(self.data[i][3][e])     # returns method info
+                print("="*15, "\n*", e + 1, self.data[i][2][e], "method : \n")  # returns method name
+                print(self.data[i][3][e])   # returns method info
             print(X)
-
 
     def run(self) :
         '''Run'''
@@ -160,12 +140,12 @@ class Module:
             print(f"Get {(self.Name)} Module Info")
             print(X)
             print("\033[1;36m")
-            a = input(f' Enter 1 : {self.Name} Module Info          \
-                      \n Enter 2 : Classes Under {self.Name} Module \
-                      \n Enter 3 : Get Class Info                     \
-                      \n Enter 4 : Get Class Methods List             \
-                      \n Enter 5 : Get Class Method Info              \
-                      \n Enter 6 : Get All Info                       \
+            a = input(f' Enter 1 : {self.Name} Module Info           \
+                      \n Enter 2 : Classes Under {self.Name} Module  \
+                      \n Enter 3 : Get Class Info                    \
+                      \n Enter 4 : Get Class Methods List            \
+                      \n Enter 5 : Get Class Method Info             \
+                      \n Enter 6 : Get All Info                      \
                       \n Enter 7 : Exit \n ')
             print(X)
 
@@ -193,15 +173,15 @@ class Module:
                 print(X)
                 break
 
-            elif all(x.isdigit() for x in a) == False :
+            elif all(x.isdigit() for x in a) is False :
                 print("\033[1;31m")
-                print("\n***Please Enter In Number Format***\n")
+                print("***Please Enter In Number Format***")
 
             else :
                 print("\033[1;31m")
-                print("\n***Please Enter Number within range***\n")    
+                print("***Please Enter Number within range***")    
 
-#? for modules with only methods
+#? For modules with only methods
 
 class Module_ :
     '''
@@ -210,37 +190,30 @@ class Module_ :
     '''
 
     def __init__(self , name : str , data : object) :
-        '''
-        Necessary to give the module name and the module data during object instantiation.
-        '''
+        '''Necessary to give the module name and the module data during object instantiation.'''
         self.name = name
         self.Name = name.capitalize()
         self.data = data
 
-
     def module_info(self) :
-        f'''
-        Returns the information about the {self.Name} module.
-        '''
+        f'''Returns the information about the {self.Name} module.'''
         print(X)
         print(f"{self.Name} Module Info : ")
         print(X)
+
         exec(f"import {self.name}\
             \nprint({self.name}.__doc__)")
 
-
     def methods_list(self):
-        f'''
-        Returns All The Methods defined under {self.Name} Module In a Systematic manner.
-        '''
+        f'''Returns All The Methods defined under {self.Name} Module In a Systematic manner.'''
         print(X)
         print(f"{self.Name} Methods :")
         print(X)
-        for i,j in enumerate(self.data,1) :
-            print(i,j[0])
-            
 
-    def method_info_(self , number : int) :
+        for i, j in enumerate(self.data, 1) :
+            print(i, j[0])
+            
+    def method_info_(self, number : int) :
         f'''
         Returns the information about the {self.Name} module method ,
         using the input number given by the user as an argument while calling the function.
@@ -248,15 +221,12 @@ class Module_ :
         Seperate Method made for use in the method_info() & all_info() method.
         '''
         self.number = number
-        print(self.data[self.number-1][0] , "Method -->")
+        print(self.data[self.number-1][0], "Method -->")
         print(self.data[self.number-1][1])
         print("-"*50)
 
-
     def method_info(self) :
-        '''
-        To Return the specific info of a module method entered by user , thus calling method_info_() function
-        '''
+        '''To Return the specific info of a module method entered by user , thus calling method_info_() function'''
         print(X)
         try :        
                 number = int(input("Enter Method number : "))
@@ -271,13 +241,11 @@ class Module_ :
             print("\033[1;31m")
             print("\t***Please Enter Number within range***")
 
-
     def export_info(self) :
         f'''
         To create a file with filename entered by the user 
-        A file containing info about the {self.Name} Module , {self.Name} Module Methods
+        A file containing info about the {self.Name} Module and it's Methods
         '''
-
         import io, sys
 
         old_stdout = sys.stdout 
@@ -300,14 +268,10 @@ class Module_ :
         sys.stdout = old_stdout 
 
         # refer : https://stackoverflow.com/questions/3906232/python-get-the-print-output-in-an-exec-statement
-        #! no other solution found yet...
-
-        # exec(f"import {self.name}")
-        # module_info = self.name.__doc__
 
         file = input("Enter name for the new text file to be created : ")
         methods_list = "\n".join([i[0] for i in self.data])
-        i = "\n" , ":"*50 , "\n"
+        i = "\n", ":"*50, "\n"
 
         with open(f"{file}.txt" , "w") as f :
             f.writelines(i)
@@ -324,11 +288,11 @@ class Module_ :
 
         print("Created File : %s.txt Successfully!"  %(file))
 
-
     def all_info(self):
-        methods_all = tuple(map(lambda a : self.method_info_(a) , range(1,len(self.data) + 1)))
-        print(methods_all[:-(len(self.data))])
-
+        f'''Returns All  Methods Under {self.Name} module along with their information.'''
+        
+        methods_all = tuple(map(lambda a : self.method_info_(a), range(1, len(self.data) + 1)))
+        print(methods_all[:-len(self.data)])
 
     def run(self) :
         while True :
@@ -366,10 +330,10 @@ class Module_ :
                 print(X)
                 break
 
-            elif all(x.isdigit() for x in a) == False :
+            elif all(x.isdigit() for x in a) is False :
                 print("\033[1;31m")
-                print("\n***Please Enter In Number Format***\n")
+                print("***Please Enter In Number Format***")
 
             else :
                 print("\033[1;31m")
-                print("\n***Please Enter Number within range***\n")    
+                print("***Please Enter Number within range***")    
