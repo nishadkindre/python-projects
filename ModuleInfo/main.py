@@ -1,6 +1,6 @@
 from modules import *
 
-def runIt(s) :
+def run_module(s) :
     number = int(s)
     a = (time , pandas , schedule , os , numpy , random , datetime , collection)
     try :
@@ -41,6 +41,6 @@ def run() :
 
         else : 
             print("\033[1;34m")
-            runIt(input_)
+            run_module(input_)
 
 run()
