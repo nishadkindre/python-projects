@@ -1,10 +1,10 @@
 from modules import *
 
-def run_module(s) :
-    number = int(s)
-    a = (time , pandas , schedule , os , numpy , random , datetime , collection)
+def run_module(num : str) :
+    number = int(num)
+    module = (time , pandas , schedule , os , numpy , random , datetime , collection)
     try :
-        return a[number-1].run()
+        return module[number-1].run()
     except Exception :
         print("\033[1;31m")
         print("\n***Please Enter Number within range***\n")    
