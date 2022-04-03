@@ -9,8 +9,8 @@ PINK = '\033[1;35m'
 CYAN = '\033[1;36m'
 GREEN = '\033[1;32m'
 
-class Module:
-    '''Constructing a 'Module' class 
+class ModuleC:
+    '''Constructing a 'ModuleC' class 
     
     With methods defined under it to return the data about the module,classes under it,methods under the classes.
     Using a combine object(preferably a zip object) containing all the data to be returned using the methods hereby defined.
@@ -178,8 +178,8 @@ class Module:
 
 #? For modules with only methods
 
-class Module_:
-    '''Constructing a 'Module_' class. 
+class Module:
+    '''Constructing a 'Module' class. 
     
     With methods defined under it to return the data about the module,and the methods under it.
     Using a combine object(preferably a zip object) containing all the data to be returned using the methods hereby defined.
