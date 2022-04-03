@@ -6,7 +6,7 @@ By providing the module name as a string and respective module_data object from 
 from module_constructor_ import *
 import modules_data as m
 
-datetime = ModuleC("datetime", m.DATETIME)
+datetime = ModuleC(name="datetime", data=m.DATETIME)
 
 collection = ModuleC("collections", m.COLLECTIONS)
 
