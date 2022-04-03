@@ -5,6 +5,7 @@ Making individual module objects to include their respective data used for makin
 
 # ------------------------------------------------------------------------------------------------------------------------------------ 
 #? FOR TIME MODULE :
+import math
 import time
 time_methods = tuple(dir(time))
 
@@ -52,23 +53,34 @@ OS = tuple(a)
 # ------------------------------------------------------------------------------------------------------------------------------------ 
 #? FOR SCHEDULE MODULE :
 import schedule
-schedule_methods_ = tuple(dir(schedule))
+schedule_methods = tuple(dir(schedule))
 from schedule import *
 schedule_methods_info = (Callable.__doc__,CancelJob.__doc__,Hashable.__doc__,IntervalError.__doc__,Job.__doc__,List.__doc__,Optional.__doc__,ScheduleError.__doc__,ScheduleValueError.__doc__,Scheduler.__doc__,Set.__doc__,Union.__doc__,__builtins__.__doc__,__cached__.__doc__,__doc__.__doc__,__file__.__doc__,__loader__.__doc__,__name__.__doc__,__package__.__doc__,schedule.__path__.__doc__,__spec__.__doc__,cancel_job.__doc__,clear.__doc__,datetime.__doc__,default_scheduler.__doc__,every.__doc__,functools.__doc__,get_jobs.__doc__,idle_seconds.__doc__,jobs.__doc__,logger.__doc__,logging.__doc__,next_run.__doc__,random.__doc__,re.__doc__,repeat.__doc__,run_all.__doc__,run_pending.__doc__,time.__doc__)
 
-a = zip(schedule_methods_ , schedule_methods_info)
+a = zip(schedule_methods , schedule_methods_info)
 SCHEDULE = tuple(a)
 
 # ------------------------------------------------------------------------------------------------------------------------------------ 
 #? FOR RANDOM MODULE : 
 import random
-random_methods_ = tuple(random.__all__)
+random_methods = tuple(random.__all__)
 
 from random import * 
 random_methods_info = (Random.__doc__,SystemRandom.__doc__,betavariate.__doc__,choice.__doc__,choices.__doc__,expovariate.__doc__,gammavariate.__doc__,gauss.__doc__,getrandbits.__doc__,getstate.__doc__,lognormvariate.__doc__,normalvariate.__doc__,paretovariate.__doc__,randbytes.__doc__,randint.__doc__,random.__doc__,randrange.__doc__,sample.__doc__,seed.__doc__,setstate.__doc__,shuffle.__doc__,triangular.__doc__,uniform.__doc__,vonmisesvariate.__doc__,weibullvariate.__doc__)
 
-a = zip(random_methods_ , random_methods_info)
+a = zip(random_methods , random_methods_info)
 RANDOM = tuple(a)
+
+# ------------------------------------------------------------------------------------------------------------------------------------ 
+#? FOR MATH MODULE :
+import math 
+math_methods = tuple(dir(math)[5:])  # excluding dunder methods
+
+from math import *
+math_methods_info = (acos.__doc__, acosh.__doc__, asin.__doc__, asinh.__doc__, atan.__doc__, atan2.__doc__, atanh.__doc__, ceil.__doc__, comb.__doc__, copysign.__doc__, cos.__doc__, cosh.__doc__, degrees.__doc__, dist.__doc__, e, erf.__doc__, erfc.__doc__, exp.__doc__, expm1.__doc__, fabs.__doc__, factorial.__doc__, floor.__doc__, fmod.__doc__, frexp.__doc__, fsum.__doc__, gamma.__doc__, gcd.__doc__, hypot.__doc__, inf, isclose.__doc__, isfinite.__doc__, isinf.__doc__, isnan.__doc__, isqrt.__doc__, lcm.__doc__, ldexp.__doc__, lgamma.__doc__, log.__doc__, log10.__doc__, log1p.__doc__, log2.__doc__, modf.__doc__, nan, nextafter.__doc__, perm.__doc__, pi, pow.__doc__, prod.__doc__, radians.__doc__, remainder.__doc__, sin.__doc__, sinh.__doc__, sqrt.__doc__, tan.__doc__, tanh.__doc__, tau, trunc.__doc__, ulp.__doc__)
+
+a = zip(math_methods , math_methods_info)
+MATH = tuple(a)
 
 # ------------------------------------------------------------------------------------------------------------------------------------ 
 #? FOR COLLECTIONS MODULE :
@@ -177,11 +189,9 @@ class tzinfo_:
 
     def tzname(self):
         'datetime -> string name of time zone.'
-        raise NotImplementedError('tzinfo subclass must override tzname()')
 
     def utcoffset(self):
         'datetime -> timedelta, positive for east of UTC, negative for west of UTC'
-        raise NotImplementedError('tzinfo subclass must override utcoffset()')
 
     def dst(self):
         '''datetime -> DST offset as timedelta, positive for east of UTC.
@@ -189,7 +199,6 @@ class tzinfo_:
         Return 0 if DST not in effect.  utcoffset() must include the DST
         offset.
         '''
-        raise NotImplementedError('tzinfo subclass must override dst()')
 
     def fromutc(self):
         'datetime in UTC -> datetime in local time.'
@@ -244,10 +253,15 @@ from datetime import timezone
 datetime_timezone_info = (timezone_.dst.__doc__,timezone_.fromutc.__doc__,timezone.max.__doc__,timezone.min.__doc__,timezone_.tzname.__doc__,timezone.utc.__doc__,timezone_.utcoffset.__doc__)
 
 datetime_date_list = ('ctime','day','fromisocalendar','fromisoformat','fromordinal','fromtimestamp','isocalendar','isoformat','isoweekday','max','min','month','replace','resolution','strftime','timetuple','today','toordinal','weekday','year') 
+
 datetime_datetime_list = ('astimezone','combine','ctime','date','day','dst','fold','fromisocalendar','fromisoformat','fromordinal','fromtimestamp','hour','isocalendar','isoformat','isoweekday','max','microsecond','min','minute','month','now','replace','resolution','second','strftime','strptime','time','timestamp','timetuple','timetz','today','toordinal','tzinfo','tzname','utcfromtimestamp','utcnow','utcoffset','utctimetuple','weekday','year')
+
 datetime_time_list = ('dst','fold','fromisoformat','hour','isoformat','max','microsecond','min','minute','replace','resolution','second','strftime','tzinfo','tzname','utcoffset')
+
 datetime_timedelta_list = ('days','max','microseconds','min','resolution','seconds','total_seconds')
+
 datetime_tzinfo_list = ('dst','fromutc','tzname','utcoffset')
+
 datetime_timezone_list = ('dst','fromutc','max','min','tzname','utc','utcoffset')
 
 import datetime
