@@ -1,23 +1,22 @@
 from modules import *
 
-def run_module(num: str) :
+def run_module(num: str):
     number = int(num)
     module = (time, pandas, schedule, os, numpy, random, datetime, collection)
-    try :
+    try:
         return module[number-1].run()
-    
-    except Exception :
-        print(red)
+    except Exception:
+        print(RED)
         print("***Please Enter Number within range***")    
 
-def run() :
-    while 1 : 
+def run():
+    while 1: 
         X = ":"*21
-        print(blue)
+        print(BLUE)
         print(X)
         print("   Get Module Info   ")
         print(X)
-        print(pink)
+        print(PINK)
 
         input_ = input(" Enter 1 : Time Module         \
                       \n Enter 2 : Pandas Module       \
@@ -29,16 +28,16 @@ def run() :
                       \n Enter 8 : Collections Module  \
                       \n Enter 0 : Exit \n " )
 
-        if input_ == "0" : 
-            print(green)
+        if input_ == "0": 
+            print(GREEN)
             print("Thank You!")
             break
 
-        elif all(a.isdigit() for a in input_) is False :
-            print(red)
+        elif all(a.isdigit() for a in input_) is False:
+            print(RED)
             print("***Please Enter In Number Format***")
 
-        else : 
+        else: 
             run_module(input_)
 
 run()
