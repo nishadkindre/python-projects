@@ -11,11 +11,11 @@ def run_module(num: str):
 
 def run():
     while 1: 
-        X = ":"*21
+        x = ":"*21
         print(BLUE)
-        print(X)
+        print(x)
         print("   Get Module Info   ")
-        print(X)
+        print(x)
         print(PINK)
 
         input_ = input(" Enter 1 : Time Module         \
