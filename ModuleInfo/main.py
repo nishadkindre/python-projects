@@ -2,10 +2,10 @@ from modules import *
 
 def run_module(num: str):
     number = int(num)
-    module = (time, pandas, schedule, os, numpy, random, datetime, collection)
-    try:
+    module = (time, pandas, schedule, os, numpy, random, math, datetime, collection)
+    try :
         return module[number-1].run()
-    except Exception:
+    except Exception :
         print(RED)
         print('***Please Enter Number within range***')    
 
@@ -17,16 +17,18 @@ def run():
         print('   Get Module Info   ')
         print(x)
         print(PINK)
+        print(' 1 : Time Module         \
+             \n 2 : Pandas Module       \
+             \n 3 : Schedule Module     \
+             \n 4 : OS Module           \
+             \n 5 : Numpy Module        \
+             \n 6 : Random Module       \
+             \n 7 : Math Module         \
+             \n 8 : Datetime Module     \
+             \n 9 : Collections Module  \
+             \n 0 : Exit \n' )
 
-        input_ = input(' Enter 1 : Time Module         \
-                      \n Enter 2 : Pandas Module       \
-                      \n Enter 3 : Schedule Module     \
-                      \n Enter 4 : OS Module           \
-                      \n Enter 5 : Numpy Module        \
-                      \n Enter 6 : Random Module       \
-                      \n Enter 7 : Datetime Module     \
-                      \n Enter 8 : Collections Module  \
-                      \n Enter 0 : Exit \n' )
+        input_ = input('Enter Number : ')
 
         if input_ == '0': 
             print(GREEN)
