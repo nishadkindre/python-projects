@@ -6,18 +6,20 @@ By providing the module name as a string and respective module_data object from 
 from module_constructor_ import *
 import modules_data as m
 
-datetime = ModuleC(name="datetime", data=m.DATETIME)
+datetime = ModuleC(name='datetime', data=m.DATETIME)
 
-collection = ModuleC("collections", m.COLLECTIONS)
+collection = ModuleC('collections', m.COLLECTIONS)
 
-schedule = Module("schedule", m.SCHEDULE)
+schedule = Module('schedule', m.SCHEDULE)
 
-random = Module("random", m.RANDOM)
+random = Module('random', m.RANDOM)
 
-numpy = Module("numpy", m.NUMPY)
+numpy = Module('numpy', m.NUMPY)
 
-time = Module("time", m.TIME)
+time = Module('time', m.TIME)
 
-pandas = Module("pandas", m.PANDAS)
+pandas = Module('pandas', m.PANDAS)
 
-os = Module("os", m.OS)
+os = Module('os', m.OS)
+
+math = Module('math', m.MATH)
