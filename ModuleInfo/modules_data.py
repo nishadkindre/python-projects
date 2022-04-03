@@ -1,5 +1,5 @@
 '''
-Contains module data. 
+Contains module data 
 Making individual module objects to include their respective data used for making module objects from the respective classes from module_constructor.
 '''
 
@@ -16,7 +16,7 @@ a = zip(time_methods, time_methods_info)
 TIME = tuple(a)
 
 # ------------------------------------------------------------------------------------------------------------------------------------ 
-#? FOR NUMPY MODULE :
+#? FOR NUMPY MODULE 
 import numpy
 numpy_methods = tuple(dir(numpy))
 
@@ -110,7 +110,7 @@ COLLECTIONS = tuple(a)
 #? FOR DATETIME MODULE :
 
 class date_:
-    """Concrete date type.
+    '''Concrete date type.
 
     Constructors:
 
@@ -136,9 +136,9 @@ class date_:
 
     Properties (readonly):
     year, month, day
-    """
+    '''
     def isocalendar(self):
-        """Return a named tuple containing ISO year, week number, and weekday.
+        '''Return a named tuple containing ISO year, week number, and weekday.
 
         The first ISO week of the year is the (Mon-Sun) week
         containing the year's first Thursday; everything else derives
@@ -146,11 +146,11 @@ class date_:
 
         The first week is 1; Monday is 1 ... Sunday is 7.
 
-        """
+        '''
     pass
 
 class timedelta_:
-    """Represent the difference between two datetime objects.
+    '''Represent the difference between two datetime objects.
 
     Supported operators:
 
@@ -165,29 +165,34 @@ class timedelta_:
 
     Representation: (days, seconds, microseconds).  Why?  Because I
     felt like it.
-    """
+    '''
     pass
 
 class tzinfo_:
-    """Abstract base class for time zone info classes.
+    '''Abstract base class for time zone info classes.
 
     Subclasses must override the name(), utcoffset() and dst() methods.
-    """
+    '''
+    __slots__ = ()
+
     def tzname(self):
-        "datetime -> string name of time zone."
+        'datetime -> string name of time zone.'
+        raise NotImplementedError('tzinfo subclass must override tzname()')
 
     def utcoffset(self):
-        "datetime -> timedelta, positive for east of UTC, negative for west of UTC"
+        'datetime -> timedelta, positive for east of UTC, negative for west of UTC'
+        raise NotImplementedError('tzinfo subclass must override utcoffset()')
 
     def dst(self):
-        """datetime -> DST offset as timedelta, positive for east of UTC.
+        '''datetime -> DST offset as timedelta, positive for east of UTC.
 
         Return 0 if DST not in effect.  utcoffset() must include the DST
         offset.
-        """
+        '''
+        raise NotImplementedError('tzinfo subclass must override dst()')
 
     def fromutc(self):
-        "datetime in UTC -> datetime in local time."
+        'datetime in UTC -> datetime in local time.'
 
     pass
 
@@ -195,7 +200,7 @@ class timezone_(tzinfo_) :
     pass
 
 class time_:
-    """Time with time zone.
+    '''Time with time zone.
 
     Constructors:
 
@@ -217,7 +222,7 @@ class time_:
     Properties (readonly):
     hour, minute, second, microsecond, tzinfo, fold
 
-    """ 
+    ''' 
 
 import datetime 
 
@@ -238,17 +243,12 @@ datetime_tzinfo_info = (tzinfo_.dst.__doc__,tzinfo_.fromutc.__doc__,tzinfo_.tzna
 from datetime import timezone
 datetime_timezone_info = (timezone_.dst.__doc__,timezone_.fromutc.__doc__,timezone.max.__doc__,timezone.min.__doc__,timezone_.tzname.__doc__,timezone.utc.__doc__,timezone_.utcoffset.__doc__)
 
-datetime_date_list = ("ctime","day","fromisocalendar","fromisoformat","fromordinal","fromtimestamp","isocalendar","isoformat","isoweekday","max","min","month","replace","resolution","strftime","timetuple","today","toordinal","weekday","year") 
-
-datetime_datetime_list = ("astimezone","combine","ctime","date","day","dst","fold","fromisocalendar","fromisoformat","fromordinal","fromtimestamp","hour","isocalendar","isoformat","isoweekday","max","microsecond","min","minute","month","now","replace","resolution","second","strftime","strptime","time","timestamp","timetuple","timetz","today","toordinal","tzinfo","tzname","utcfromtimestamp","utcnow","utcoffset","utctimetuple","weekday","year")
-
-datetime_time_list = ("dst","fold","fromisoformat","hour","isoformat","max","microsecond","min","minute","replace","resolution","second","strftime","tzinfo","tzname","utcoffset")
-
-datetime_timedelta_list = ("days","max","microseconds","min","resolution","seconds","total_seconds")
-
-datetime_tzinfo_list = ("dst","fromutc","tzname","utcoffset")
-
-datetime_timezone_list = ("dst","fromutc","max","min","tzname","utc","utcoffset")
+datetime_date_list = ('ctime','day','fromisocalendar','fromisoformat','fromordinal','fromtimestamp','isocalendar','isoformat','isoweekday','max','min','month','replace','resolution','strftime','timetuple','today','toordinal','weekday','year') 
+datetime_datetime_list = ('astimezone','combine','ctime','date','day','dst','fold','fromisocalendar','fromisoformat','fromordinal','fromtimestamp','hour','isocalendar','isoformat','isoweekday','max','microsecond','min','minute','month','now','replace','resolution','second','strftime','strptime','time','timestamp','timetuple','timetz','today','toordinal','tzinfo','tzname','utcfromtimestamp','utcnow','utcoffset','utctimetuple','weekday','year')
+datetime_time_list = ('dst','fold','fromisoformat','hour','isoformat','max','microsecond','min','minute','replace','resolution','second','strftime','tzinfo','tzname','utcoffset')
+datetime_timedelta_list = ('days','max','microseconds','min','resolution','seconds','total_seconds')
+datetime_tzinfo_list = ('dst','fromutc','tzname','utcoffset')
+datetime_timezone_list = ('dst','fromutc','max','min','tzname','utc','utcoffset')
 
 import datetime
 datetime_all_classes_list = tuple(datetime.__all__)
