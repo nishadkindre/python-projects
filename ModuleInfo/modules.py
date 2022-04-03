@@ -4,22 +4,20 @@ By providing the module name as a string and respective module_data object from 
 '''
 
 from module_constructor_ import *
-from modules_data import \
-schedule_data , random_data , numpy_data , time_data , \
-pandas_data , os_data , collections_data , datetime_data
+import modules_data as m
 
-datetime = ModuleC("datetime", datetime_data)
+datetime = ModuleC("datetime", m.DATETIME)
 
-collection = ModuleC("collections", collections_data)
+collection = ModuleC("collections", m.COLLECTIONS)
 
-schedule = Module("schedule", schedule_data)
+schedule = Module("schedule", m.SCHEDULE)
 
-random = Module("random", random_data)
+random = Module("random", m.RANDOM)
 
-numpy = Module("numpy", numpy_data)
+numpy = Module("numpy", m.NUMPY)
 
-time = Module("time", time_data)
+time = Module("time", m.TIME)
 
-pandas = Module("pandas", pandas_data)
+pandas = Module("pandas", m.PANDAS)
 
-os = Module("os", os_data)
+os = Module("os", m.OS)
