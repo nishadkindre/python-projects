@@ -204,7 +204,7 @@ class Module_:
         for i, j in enumerate(self.data, 1):
             print(i, '.', j[0])
             
-    def method_info_(self, number : int):
+    def method_info_(self, number: int):
         f'''Returns the information about the {self.Name} module method.
         
         Using the input number given by the user as an argument while calling the function.
