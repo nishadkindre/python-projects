@@ -3,11 +3,11 @@
 #? Constructing a class used to create module info objects with it. 
 
 X = ':'*30
-red = '\033[1;31m'
-blue = '\033[1;34m'
-pink = '\033[1;35m'
-cyan = '\033[1;36m'
-green = '\033[1;32m'
+RED = '\033[1;31m'
+BLUE = '\033[1;34m'
+PINK = '\033[1;35m'
+CYAN = '\033[1;36m'
+GREEN = '\033[1;32m'
 
 class Module:
     '''Constructing a 'Module' class 
@@ -52,14 +52,14 @@ class Module:
                 print('Info :\n', self.data[c-1][1], '\n')
                 return c
             elif c < 0:
-                print(red)
+                print(RED)
                 print('***Please Enter Only Positive Numbers***')
             else:
-                print(red)
+                print(RED)
                 print('***Please Enter Number within range***')
 
         except ValueError:
-            print(red)
+            print(RED)
             print('***Please Enter In Number Format Only***')
 
         else:
@@ -79,7 +79,7 @@ class Module:
                 print(i, j)
 
         except Exception:
-            print(red)
+            print(RED)
             print(Exception)
 
         else:
@@ -102,15 +102,15 @@ class Module:
                     print(self.data[d-1][2][e-1], 'method :\n')  # returns method name
                     print(self.data[d-1][3][e-1])  # returns method info
                 else:
-                    print(red)
+                    print(RED)
                     print('***Please Enter A Positive Number within range***') 
 
             except:
-                print(red)
+                print(RED)
                 print('***Enter Correct Class Number to Proceed***')
 
         except ValueError:
-            print(red)
+            print(RED)
             print('\t***Please Enter In Number Format Only***')
 
     def all_info(self):  
@@ -131,11 +131,11 @@ class Module:
     def run(self) :
         '''Run'''
         while True :
-            print(blue)
+            print(BLUE)
             print(X)
             print(f'Get {(self.Name)} Module Info')
             print(X)
-            print(cyan)
+            print(CYAN)
             a = input(f' Enter 1 : {self.Name} Module Info           \
                       \n Enter 2 : Classes Under {self.Name} Module  \
                       \n Enter 3 : Get Class Info                    \
@@ -164,16 +164,16 @@ class Module:
                 self.all_info()
 
             elif a == '7':
-                print(green)
+                print(GREEN)
                 print('Thank You!')
                 break
 
             elif all(x.isdigit() for x in a) is False:
-                print(red)
+                print(RED)
                 print('***Please Enter In Number Format***')
 
             else:
-                print(red)
+                print(RED)
                 print('***Please Enter Number within range***')    
 
 #? For modules with only methods
@@ -204,7 +204,7 @@ class Module_:
         for i, j in enumerate(self.data, 1):
             print(i, '.', j[0])
             
-    def method_info_(self, number: int):
+    def method_info_(self, number : int):
         f'''Returns the information about the {self.Name} module method.
         
         Using the input number given by the user as an argument while calling the function.
@@ -216,22 +216,22 @@ class Module_:
         print('\n' + '-'*50)
 
     def method_info(self):
-        '''Return the specific info of a module method entered by user, thus calling method_info_() function.'''
+        '''Return the specific info of a module method enteRED by user, thus calling method_info_() function.'''
         try:        
                 number = int(input('Enter Method number :'))
                 print(X)
                 self.method_info_(number)
 
         except ValueError:
-            print(red)
+            print(RED)
             print('\t***Please Enter In Number Format Only***')
 
         except IndexError:
-            print(red)
+            print(RED)
             print('\t***Please Enter Number within range***')
 
     def export_info(self):
-        f'''To create a file with filename entered by the user.
+        f'''To create a file with filename enteRED by the user.
         
         A file containing info about the {self.Name} Module and it's Methods.
         '''
@@ -284,11 +284,11 @@ class Module_:
 
     def run(self):
         while True:
-            print(blue)
+            print(BLUE)
             print(X)
             print(f'Get {self.Name} Module Info')
             print(X)
-            print(cyan)
+            print(CYAN)
             a = input(f' Enter 1 : {self.Name} Module info          \
                       \n Enter 2 : Method List                      \
                       \n Enter 3 : Method Info                      \
@@ -313,15 +313,15 @@ class Module_:
                 self.export_info()
 
             elif a == '6':
-                print(green)
+                print(GREEN)
                 print('Thank You!')
                 break
 
             elif all(x.isdigit() for x in a) is False:
-                print(red)
+                print(RED)
                 print('***Please Enter In Number Format***')
 
             else:
-                print(red)
+                print(RED)
                 print('***Please Enter Number within range***')    
                 
