@@ -136,39 +136,41 @@ class ModuleC:
             print(f'Get {(self.Name)} Module Info')
             print(X)
             print(CYAN)
-            a = input(f' Enter 1 : {self.Name} Module Info           \
-                      \n Enter 2 : Classes Under {self.Name} Module  \
-                      \n Enter 3 : Get Class Info                    \
-                      \n Enter 4 : Get Class Methods List            \
-                      \n Enter 5 : Get Class Method Info             \
-                      \n Enter 6 : Get All Info                      \
-                      \n Enter 7 : Exit \n ')
+            print(f' 1 : {self.Name} Module Info           \
+                  \n 2 : Classes Under {self.Name} Module  \
+                  \n 3 : Get Class Info                    \
+                  \n 4 : Get Class Methods List            \
+                  \n 5 : Get Class Method Info             \
+                  \n 6 : Get All Info                      \
+                  \n 7 : Exit \n ')
+
+            input_ = input('Enter Number : ')  
             print(X)
 
-            if a == '1':
+            if input_ == '1':
                 self.module_info()
 
-            elif a == '2':
+            elif input_ == '2':
                 self.classes_list()
 
-            elif a == '3':
+            elif input_ == '3':
                 self.class_info()
 
-            elif a == '4':
+            elif input_ == '4':
                 self.class_method_list()
 
-            elif a == '5':
+            elif input_ == '5':
                 self.class_method_info()
 
-            elif a == '6':
+            elif input_ == '6':
                 self.all_info()
 
-            elif a == '7':
+            elif input_ == '7':
                 print(GREEN)
                 print('Thank You!')
                 break
 
-            elif all(x.isdigit() for x in a) is False:
+            elif all(x.isdigit() for x in input_) is False:
                 print(RED)
                 print('***Please Enter In Number Format***')
 
@@ -218,7 +220,7 @@ class Module:
     def method_info(self):
         '''Return the specific info of a module method enteRED by user, thus calling method_info_() function.'''
         try:        
-                number = int(input('Enter Method number :'))
+                number = int(input('Enter Method number : '))
                 print(X)
                 self.method_info_(number)
 
@@ -289,39 +291,36 @@ class Module:
             print(f'Get {self.Name} Module Info')
             print(X)
             print(CYAN)
-            a = input(f' Enter 1 : {self.Name} Module info          \
-                      \n Enter 2 : Method List                      \
-                      \n Enter 3 : Method Info                      \
-                      \n Enter 4 : Get All Methods Info             \
-                      \n Enter 5 : Export All Info To a Text File   \
-                      \n Enter 6 : Exit \n ')
+            print(f' 1 : {self.Name} Module info          \
+                  \n 2 : Method List                      \
+                  \n 3 : Method Info                      \
+                  \n 4 : Get All Methods Info             \
+                  \n 5 : Export All Info To a Text File   \
+                  \n 6 : Exit \n ')
+
+            input_ = input('Enter Number : ')
             print(X)
 
-            if a == '1': 
+            if input_ == '1': 
                 self.module_info()
-
-            elif a == '2': 
+            elif input_ == '2': 
                 self.methods_list()
-
-            elif a == '3':
+            elif input_ == '3':
                 self.method_info()
-
-            elif a == '4': 
+            elif input_ == '4': 
                 self.all_info()
-
-            elif a == '5':
+            elif input_ == '5':
                 self.export_info()
 
-            elif a == '6':
+            elif input_ == '6':
                 print(GREEN)
                 print('Thank You!')
                 break
 
-            elif all(x.isdigit() for x in a) is False:
+            elif all(x.isdigit() for x in input_) is False:
                 print(RED)
                 print('***Please Enter In Number Format***')
 
             else:
                 print(RED)
                 print('***Please Enter Number within range***')    
-                
