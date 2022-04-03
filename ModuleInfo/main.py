@@ -3,9 +3,9 @@ from modules import *
 def run_module(num: str):
     number = int(num)
     module = (time, pandas, schedule, os, numpy, random, datetime, collection)
-    try :
+    try:
         return module[number-1].run()
-    except Exception :
+    except Exception:
         print(RED)
         print('***Please Enter Number within range***')    
 
