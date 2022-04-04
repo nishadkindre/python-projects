@@ -74,7 +74,7 @@ class ModuleC:
         a = self.class_info()
         try:         
             print(X)
-            print('Methods under Class %s :' %(self.data[a-1][0]))
+            print('Methods under Class %s :\n' %(self.data[a-1][0]))
             for i, j in enumerate(self.data[a-1][2], 1) : 
                 print(i, j)
 
@@ -94,8 +94,8 @@ class ModuleC:
             d = self.class_method_list()
             print(X)
             print('\nEnter the Method Number :')
-            ee = input()
-            e = int(ee)
+            number = input()
+            e = int(number)
             print(X)
             try:
                 if len(self.data[d-1][3])+1 > e > 0:
@@ -116,15 +116,17 @@ class ModuleC:
     def all_info(self) -> None:  
         f'''Returns All Classes and Methods Under {self.Name} Module along with their information.'''
         
+        x = '-'*30, '\n'
+        self.module_info()
         for i in range(len(self.data)):
             print(X)
             print('Class ', self.data[i][0], '\n')
             print('Info :\n', self.data[i][1])
             print('\n')
-            print('Methods Under Class', self.data[i][0], ':\n')
+            print('Methods Under Class %s :\n' %(self.data[i][0]))
 
             for e in range(len(self.data[i][2])):
-                print('-'*30, '\n', e+1, '.', (self.data[i][2][e]+'()'), 'method :\n')  # returns method name
+                print(x, e+1, '.', (self.data[i][2][e]+'()'), 'method :\n')  # returns method name
                 print(self.data[i][3][e], '\n')   # returns method info
             print(X)
 
@@ -133,7 +135,7 @@ class ModuleC:
         while True :
             print(BLUE)
             print(X)
-            print(f'Get {(self.Name)} Module Info')
+            print(f'Get {self.Name} Module Info')
             print(X)
             print(CYAN)
             print(f' 1 : {self.Name} Module Info           \
@@ -180,26 +182,13 @@ class ModuleC:
 
 #? For modules with only methods
 
-class Module:
+class Module(ModuleC):
     '''Constructing a 'Module' class. 
     
     With methods defined under it to return the data about the module,and the methods under it.
     Using a combine object(preferably a zip object) containing all the data to be returned using the methods hereby defined.
     '''
-
-    def __init__(self , name: str , data: object) -> None:
-        '''Necessary to give the module name and the module data during object instantiation.'''
-        self.name = name
-        self.Name = name.capitalize()
-        self.data = data
-
-    def module_info(self) -> None:
-        f'''Returns the information about the {self.Name} module.'''
-        print(f'{self.Name} Module Info :')
-        print('\n')
-        exec(f"import {self.name}\
-            \nprint({self.name}.__doc__)")
-
+    
     def methods_list(self) -> None:
         f'''Returns All The Methods defined under {self.Name} Module In a Systematic manner.'''
         print(f'{self.Name} Methods :\n')
@@ -248,22 +237,27 @@ class Module:
 
         return output_ 
         # refer : https://stackoverflow.com/questions/3906232/python-get-the-print-output-in-an-exec-statement
+    def all_info(self) -> None:
+        f'''Returns All Methods Under {self.Name} module along with their information.'''
+        
+        methods_all = tuple(map(lambda a: self.method_info_(a), range(1, len(self.data)+1)))
+        print(methods_all[:-len(self.data)])
 
     def export_info(self) -> None:
         f'''To create a file with filename enteRED by the user.
         
         A file containing info about the {self.Name} Module and it's Methods.
         '''
+        x = '\n', ':'*50, '\n'
         a = 'self.module_info()'
-        module_info = self.print_output(a)
-
         b = 'self.all_info()' 
+
+        module_info = self.print_output(a)
         methods_info = self.print_output(b)
+        methods_list = '\n'.join([i[0] for i in self.data])
 
         file = input('Enter New File name :')
-        methods_list = '\n'.join([i[0] for i in self.data])
-        x = '\n', ':'*50, '\n'
-
+        
         with open(f'{file}.txt', 'w') as f :
             f.writelines(x)
             f.write(f'{self.Name} Module')
@@ -279,13 +273,6 @@ class Module:
             f.write(methods_info)
 
         print(f'Created File : {file}.txt Successfully!')
-
-
-    def all_info(self) -> None:
-        f'''Returns All Methods Under {self.Name} module along with their information.'''
-        
-        methods_all = tuple(map(lambda a: self.method_info_(a), range(1, len(self.data)+1)))
-        print(methods_all[:-len(self.data)])
 
     def run(self) -> None:
         while True:
