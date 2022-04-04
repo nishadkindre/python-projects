@@ -16,27 +16,27 @@ class ModuleC:
     Using a combine object(preferably a zip object) containing all the data to be returned using the methods hereby defined.
     '''
 
-    def __init__(self, name: str, data: object):
+    def __init__(self, name: str, data: object) -> None:
         '''Necessary to give the module name and the module data during object instantiation.'''
         self.name = name
         self.Name = name.capitalize()
         self.data = data
 
-    def module_info(self):
+    def module_info(self) -> None:
         f'''Returns the information about the {self.Name} module.'''
         print(f'{self.Name} Module Info :')
         print('\n')
         exec(f"import {self.name}\
             \nprint({self.name}.__doc__)")
 
-    def classes_list(self):
+    def classes_list(self) -> None:
         f'''Returns All The Classes defined under {self.Name} Module.'''
         print(f'{self.Name} Module Classes :')
         print('\n')
         for i, j in enumerate(self.data, 1):
             print(i, j[0])
 
-    def class_info(self):
+    def class_info(self) -> int:  # function returns an int value
         f'''Returns the information about the Specific Class of {self.Name} module.
         
         Using the input number given by the user.
@@ -66,7 +66,7 @@ class ModuleC:
             return c
             # refer : https://stackoverflow.com/questions/20768856/calling-a-variable-from-one-function-to-another-function-in-python 
 
-    def class_method_list(self):
+    def class_method_list(self) -> int:
         f'''Returns All the Methods Under specific Class of {self.Name} Module.'''
         
         # refer : https://devnote.in/how-to-call-one-method-from-another-within-the-same-class-in-python/
@@ -85,7 +85,7 @@ class ModuleC:
         else:
             return a
 
-    def class_method_info(self):
+    def class_method_info(self) -> None:
         f'''Returns the information about the specific method of any class under {self.name} Module.
         
         Using the input number given by the user.    
@@ -113,7 +113,7 @@ class ModuleC:
             print(RED)
             print('\t***Please Enter In Number Format Only***')
 
-    def all_info(self):  
+    def all_info(self) -> None:  
         f'''Returns All Classes and Methods Under {self.Name} Module along with their information.'''
         
         for i in range(len(self.data)):
@@ -124,11 +124,11 @@ class ModuleC:
             print('Methods Under Class', self.data[i][0], ':\n')
 
             for e in range(len(self.data[i][2])):
-                print('-'*30, '\n', e+1, '.', self.data[i][2][e], 'method :\n')  # returns method name
+                print('-'*30, '\n', e+1, '.', (self.data[i][2][e]+'()'), 'method :\n')  # returns method name
                 print(self.data[i][3][e], '\n')   # returns method info
             print(X)
 
-    def run(self) :
+    def run(self) -> None:
         '''Run'''
         while True :
             print(BLUE)
@@ -187,26 +187,26 @@ class Module:
     Using a combine object(preferably a zip object) containing all the data to be returned using the methods hereby defined.
     '''
 
-    def __init__(self , name: str , data: object):
+    def __init__(self , name: str , data: object) -> None:
         '''Necessary to give the module name and the module data during object instantiation.'''
         self.name = name
         self.Name = name.capitalize()
         self.data = data
 
-    def module_info(self):
+    def module_info(self) -> None:
         f'''Returns the information about the {self.Name} module.'''
         print(f'{self.Name} Module Info :')
         print('\n')
         exec(f"import {self.name}\
             \nprint({self.name}.__doc__)")
 
-    def methods_list(self):
+    def methods_list(self) -> None:
         f'''Returns All The Methods defined under {self.Name} Module In a Systematic manner.'''
         print(f'{self.Name} Methods :\n')
         for i, j in enumerate(self.data, 1):
             print(i, '.', j[0])
             
-    def method_info_(self, number : int):
+    def method_info_(self, number: int) -> None:
         f'''Returns the information about the {self.Name} module method.
         
         Using the input number given by the user as an argument while calling the function.
@@ -217,7 +217,7 @@ class Module:
         print(self.data[self.number-1][1])
         print('\n' + '-'*50)
 
-    def method_info(self):
+    def method_info(self) -> None:
         '''Return the specific info of a module method enteRED by user, thus calling method_info_() function.'''
         try:        
                 number = int(input('Enter Method number : '))
@@ -232,31 +232,30 @@ class Module:
             print(RED)
             print('\t***Please Enter Number within range***')
 
-    def export_info(self):
+
+    def print_output(self, input_: str) -> str:  # function returns a str value
+        import io
+        import sys
+        old_stdout = sys.stdout 
+        new_stdout = io.StringIO() 
+        sys.stdout = new_stdout   
+        exec(input_)
+        output_ = sys.stdout.getvalue().strip()
+        sys.stdout = old_stdout     
+
+        return output_ 
+        # refer : https://stackoverflow.com/questions/3906232/python-get-the-print-output-in-an-exec-statement
+
+    def export_info(self) -> None:
         f'''To create a file with filename enteRED by the user.
         
         A file containing info about the {self.Name} Module and it's Methods.
         '''
-        import io
-        import sys
-
-        old_stdout = sys.stdout 
-        new_stdout = io.StringIO() 
-        sys.stdout = new_stdout 
         a = 'self.module_info()'
-        exec(a)
-        module_info = sys.stdout.getvalue().strip()
-        sys.stdout = old_stdout 
+        module_info = self.print_output(a)
 
-        old_stdout = sys.stdout 
-        new_stdout = io.StringIO() 
-        sys.stdout = new_stdout 
         b = 'self.all_info()' 
-        exec(b)
-        methods_info = sys.stdout.getvalue().strip()
-        sys.stdout = old_stdout 
-
-        # refer : https://stackoverflow.com/questions/3906232/python-get-the-print-output-in-an-exec-statement
+        methods_info = self.print_output(b)
 
         file = input('Enter New File name :')
         methods_list = '\n'.join([i[0] for i in self.data])
@@ -278,13 +277,14 @@ class Module:
 
         print(f'Created File : {file}.txt Successfully!')
 
-    def all_info(self):
+
+    def all_info(self) -> None:
         f'''Returns All Methods Under {self.Name} module along with their information.'''
         
         methods_all = tuple(map(lambda a : self.method_info_(a), range(1, len(self.data)+1)))
         print(methods_all[:-len(self.data)])
 
-    def run(self):
+    def run(self) -> None:
         while True:
             print(BLUE)
             print(X)
@@ -303,12 +303,16 @@ class Module:
 
             if input_ == '1': 
                 self.module_info()
+                
             elif input_ == '2': 
                 self.methods_list()
+                
             elif input_ == '3':
                 self.method_info()
+                
             elif input_ == '4': 
                 self.all_info()
+                
             elif input_ == '5':
                 self.export_info()
 
@@ -323,4 +327,6 @@ class Module:
 
             else:
                 print(RED)
-                print('***Please Enter Number within range***')    
+                print('***Please Enter Number within range***')  
+                
+               
