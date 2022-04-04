@@ -36,6 +36,7 @@ class ModuleC:
         for i, j in enumerate(self.data, 1):
             print(i, j[0])
 
+
     def class_info(self) -> int:  # function returns an int value
         f'''Returns the information about the Specific Class of {self.Name} module.
         
@@ -47,25 +48,25 @@ class ModuleC:
             number = input()     
             c = int(number)
             print(X)
-            if c in range(1, len(self.data)+1):
+            if c<=0:
+                print(RED)
+                print('***Please Enter Only Positive Numbers***')
+
+            else: 
                 print('Class', self.data[c-1][0], '\n')
                 print('Info :\n', self.data[c-1][1], '\n')
                 return c
-            elif c < 0:
-                print(RED)
-                print('***Please Enter Only Positive Numbers***')
-            else:
-                print(RED)
-                print('***Please Enter Number within range***')
 
         except ValueError:
             print(RED)
             print('***Please Enter In Number Format Only***')
 
-        else:
-            return c
-            # refer : https://stackoverflow.com/questions/20768856/calling-a-variable-from-one-function-to-another-function-in-python 
+        except IndexError:
+            print(RED)
+            print('***Please Enter Number within range***')
 
+            # refer : https://stackoverflow.com/questions/20768856/calling-a-variable-from-one-function-to-another-function-in-python
+            
     def class_method_list(self) -> int:
         f'''Returns All the Methods Under specific Class of {self.Name} Module.'''
         
@@ -79,8 +80,7 @@ class ModuleC:
                 print(i, j)
 
         except Exception:
-            print(RED)
-            print(Exception)
+            print('.')
 
         else:
             return a
