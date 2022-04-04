@@ -234,8 +234,9 @@ class Module:
 
 
     def print_output(self, input_: str) -> str:  # function returns a str value
-        '''Return the output of a function taken as an argument
-        For special purpose of printing output in a text file'''
+        '''Return the output of a function taken as an argument.
+        
+        For special purpose of printing output in a text file.'''
         import io
         import sys
         old_stdout = sys.stdout 
@@ -250,6 +251,7 @@ class Module:
 
     def export_info(self) -> None:
         f'''To create a file with filename enteRED by the user.
+        
         A file containing info about the {self.Name} Module and it's Methods.
         '''
         a = 'self.module_info()'
