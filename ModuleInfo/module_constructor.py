@@ -26,8 +26,8 @@ class ModuleC:
         f'''Returns the information about the {self.Name} module.'''
         print(f'{self.Name} Module Info :')
         print('\n')
-        exec(f"import {self.name}\
-            \nprint({self.name}.__doc__)")
+        exec(f'import {self.name}\
+            \nprint({self.name}.__doc__)')
 
     def classes_list(self) -> None:
         f'''Returns All The Classes defined under {self.Name} Module.'''
@@ -80,7 +80,7 @@ class ModuleC:
                 print(i, j)
 
         except Exception:
-            print('.')
+            print('.')  # prints when an exception occurs in the method called
 
         else:
             return a
@@ -97,21 +97,19 @@ class ModuleC:
             number = input()
             e = int(number)
             print(X)
-            try:
-                if len(self.data[d-1][3])+1 > e > 0:
-                    print(self.data[d-1][2][e-1], 'method :\n')  # returns method name
-                    print(self.data[d-1][3][e-1])  # returns method info
-                else:
-                    print(RED)
-                    print('***Please Enter A Positive Number within range***') 
-
-            except:
+            if e not in range(1,len(self.data[d-1][3])+1):
                 print(RED)
-                print('***Enter Correct Class Number to Proceed***')
-
+                print('***Please Enter A Positive Number within range***') 
+            else:
+                print(self.data[d-1][2][e-1], 'method :\n')  # returns method name
+                print(self.data[d-1][3][e-1])  # returns method info
+            
         except ValueError:
             print(RED)
-            print('\t***Please Enter In Number Format Only***')
+            print('***Please Enter In Number Format Only***')
+
+        except Exception :
+            print('***Enter Correct Class Number to proceed!***')  # prints when an exception occurs in the methods called
 
     def all_info(self) -> None:  
         f'''Returns All Classes and Methods Under {self.Name} Module along with their information.'''
@@ -193,7 +191,7 @@ class Module(ModuleC):
         f'''Returns All The Methods defined under {self.Name} Module In a Systematic manner.'''
         print(f'{self.Name} Methods :\n')
         for i, j in enumerate(self.data, 1):
-            print(i, '.', j[0])
+            print(i, j[0])
             
     def method_info_(self, number: int) -> None:
         f'''Returns the information about the {self.Name} module method.
@@ -237,6 +235,7 @@ class Module(ModuleC):
 
         return output_ 
         # refer : https://stackoverflow.com/questions/3906232/python-get-the-print-output-in-an-exec-statement
+        
     def all_info(self) -> None:
         f'''Returns All Methods Under {self.Name} module along with their information.'''
         
