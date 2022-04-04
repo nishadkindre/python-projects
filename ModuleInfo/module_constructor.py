@@ -220,9 +220,9 @@ class Module:
     def method_info(self) -> None:
         '''Return the specific info of a module method enteRED by user, thus calling method_info_() function.'''
         try:        
-                number = int(input('Enter Method number : '))
-                print(X)
-                self.method_info_(number)
+            number = int(input('Enter Method number : '))
+            print(X)
+            self.method_info_(number)
 
         except ValueError:
             print(RED)
@@ -234,6 +234,8 @@ class Module:
 
 
     def print_output(self, input_: str) -> str:  # function returns a str value
+        '''Return the output of a function taken as an argument
+        For special purpose of printing output in a text file'''
         import io
         import sys
         old_stdout = sys.stdout 
@@ -248,7 +250,6 @@ class Module:
 
     def export_info(self) -> None:
         f'''To create a file with filename enteRED by the user.
-        
         A file containing info about the {self.Name} Module and it's Methods.
         '''
         a = 'self.module_info()'
@@ -281,7 +282,7 @@ class Module:
     def all_info(self) -> None:
         f'''Returns All Methods Under {self.Name} module along with their information.'''
         
-        methods_all = tuple(map(lambda a : self.method_info_(a), range(1, len(self.data)+1)))
+        methods_all = tuple(map(lambda a: self.method_info_(a), range(1, len(self.data)+1)))
         print(methods_all[:-len(self.data)])
 
     def run(self) -> None:
@@ -328,5 +329,3 @@ class Module:
             else:
                 print(RED)
                 print('***Please Enter Number within range***')  
-                
-               
