@@ -1,18 +1,14 @@
 '''To construct Individual module objects in order to display their data.'''
 
+from textstyle import *
 X = ':'*30
-RED = '\033[1;31m'
-BLUE = '\033[1;34m'
-PINK = '\033[1;35m'
-CYAN = '\033[1;36m'
-GREEN = '\033[1;32m'
 
-#? Constructing a class used to create module info objects with it 
+#? Constructing a class used to create module info objects with it. 
 class ModuleC:
     '''Constructing a 'ModuleC' class 
     
-    With methods defined under it to return the data about the module,classes under it,methods under the classes.
-    Using a combine object(preferably a zip object) containing all the data to be returned using the methods hereby defined.
+    >>> With methods defined under it to return the data about the module,classes under it,methods under the classes.
+    >>> Using a combine object(preferably a zip object) containing all the data to be returned using the methods hereby defined.
     '''
 
     def __init__(self, name: str, data: object) -> None:
@@ -43,18 +39,18 @@ class ModuleC:
         print('Enter Class Number :')
         try: 
             number = input()     
-            c = int(number)
+            a = int(number)
             print(X)
-            class_name: str = self.data[c-1][0]
-            class_info: str = self.data[c-1][1]
+            class_name: str = self.data[a-1][0]
+            class_info: str = self.data[a-1][1]
 
-            if c<=0:
+            if a<=0:
                 print(RED)
                 print('***Please Enter Only Positive Numbers***')
             else: 
                 print('Class', class_name, '\n')
                 print('Info :\n', class_info, '\n')
-                return c
+                return a
                 # refer : https://stackoverflow.com/questions/20768856/calling-a-variable-from-one-function-to-another-function-in-python 
 
         except ValueError:
@@ -67,21 +63,24 @@ class ModuleC:
 
     def class_methods_list(self) -> int:
         '''Returns All the Methods Under specific Class of the Module.'''
+        
+        # refer : https://devnote.in/how-to-call-one-method-from-another-within-the-same-class-in-python/
         self.classes_list()
-        a: int = self.class_info()
-        class_name: str = self.data[a-1][0]
-        class_methods: tuple = self.data[a-1][2]
+        b: int = self.class_info()
+        class_name: str = self.data[b-1][0]
+        class_methods: tuple = self.data[b-1][2]
 
         try:         
             print(X)
             print(f'Methods under Class {class_name} :')
-            for i, j in enumerate(class_methods, 1) : 
-                print(i, j)
-                
+            for y, z in enumerate(class_methods, 1) : 
+                print(y, z)
+
         except Exception:
             print('.')  # prints when an exception occurs in the method called
+
         else:
-            return a
+            return b
 
     def class_method_info(self) -> None:
         '''Returns the information about the specific method of any class under the Module.
@@ -89,18 +88,18 @@ class ModuleC:
         Using the input number given by the user.    
         '''        
         try:
-            d: int = self.class_methods_list()
+            c: int = self.class_methods_list()
             print(X)
             print('\nEnter the Method Number :')
             number = input()
-            e = int(number)
+            d = int(number)
             print(X)
 
-            methods_info_list: tuple = self.data[d-1][3]
-            method_name: str = self.data[d-1][2][e-1]
-            method_info: str = methods_info_list[e-1]
+            method_name: str = self.data[c-1][2][d-1]
+            method_info: str = methods_info_list[d-1]
+            methods_info_list: tuple = self.data[c-1][3]
 
-            if e not in range(1, len(methods_info_list)+1):
+            if d not in range(1, len(methods_info_list)+1):
                 print(RED)
                 print('***Please Enter A Positive Number within range***') 
             else:
@@ -129,21 +128,21 @@ class ModuleC:
             print('\n')
             print(f'Methods Under Class {class_name} :\n')
 
-            for e in range(len(class_methods)):
-                method_name: str = self.data[i][2][e] + '()'
-                method_info: str = self.data[i][3][e]
+            for j in range(len(class_methods)):
+                method_name: str = self.data[i][2][j] + '()'
+                method_info: str = self.data[i][3][j]
                 print(x)
-                print(e+1, '.', method_name, 'method :\n')
+                print(j+1, '.', method_name, 'method :\n')
                 print(method_info, '\n')
             print(X)
 
-    def print_output(self, input_: str) -> str:  # function returns a str value
+    def print_output(self, input_: str = 'self.all_info()') -> str:  # function returns a str value , deafault parameter = 'self.all_info()'
         '''Helper Method.
 
         >>> Return the output of an input(a function in our case) taken as an argument.
         >>> For special purpose of printing output in a text file.
 
-        Special Method made for use in the exprt_info() method of both classes.
+        Special Method made for use in the export_info().
         '''
         import io
         import sys
@@ -157,33 +156,34 @@ class ModuleC:
         return output_ 
         # refer : https://stackoverflow.com/questions/3906232/python-get-the-print-output-in-an-exec-statement
 
-    def export_info(self):
+    def export_info(self) -> None:
         '''To create a file with filename entered by the user.
         
         A file containing info about the  Module and it's Methods.
         '''       
-        a = 'self.all_info()' 
-        all_info = self.print_output(a)
+        all_info = self.print_output()
         file = input('Enter New File name :')
         with open(f'{file}.txt', 'w') as f :
             f.write(all_info)
-            
         print(f'Created File : {file}.txt Successfully!')
+
+    def intro(self) -> None:
+        print(BLUE)
+        print(X)
+        print(f'Get {self.Name} Module Info')
+        print(X)
+        print(CYAN)
 
     def run(self) -> None:
         '''Run'''
         while True :
-            print(BLUE)
-            print(X)
-            print(f'Get {self.Name} Module Info')
-            print(X)
-            print(CYAN)
+            self.intro()
             print(f' 1 : {self.Name} Module Info           \
                   \n 2 : Classes Under {self.Name} Module  \
-                  \n 3 : Get Class Info                    \
-                  \n 4 : Get Class Methods List            \
-                  \n 5 : Get Class Method Info             \
-                  \n 6 : Get All Info                      \
+                  \n 3 : Class Info                        \
+                  \n 4 : Class Methods List                \
+                  \n 5 : Class Method Info                 \
+                  \n 6 : All Info                          \
                   \n 7 : Export All Info To a Text File    \
                   \n 8 : Exit \n')
 
@@ -224,20 +224,24 @@ class ModuleC:
                 print(RED)
                 print('***Please Enter Number within range***')    
 
-#? For modules with only methods
+#? A Class For modules with only methods.
+
 class Module(ModuleC):
-    
     '''Constructing a 'Module' class. 
     
-    With methods defined under it to return the data about the module,and the methods under it.
-    Using a combine object(preferably a zip object) containing all the data to be returned using the methods hereby defined.
+    >>> With methods defined under it to return the data about the module,and the methods under it.
+    >>> Using a combine object(preferably a zip object) containing all the data to be returned using the methods hereby defined.
+    
+    Inherited Methods from ModuleC:
+    >>> module_info()
+    >>> export_info()
+    >>> intro()
     '''
-
     def methods_list(self) -> None:
         '''Returns All The Methods defined under the Module In a Systematic manner.'''
         print(f'{self.Name} Methods :\n')
-        for i, j in enumerate(self.data, 1):
-            print(i, j[0])
+        for y, z in enumerate(self.data, 1):
+            print(y, z[0])
             
     def method_info_(self, number: int) -> None:
         '''Helper Method.
@@ -249,7 +253,7 @@ class Module(ModuleC):
         '''
         x: str = '\n' + '-'*50
         self.number = number
-        method_name: str = self.data[self.number-1][0]
+        method_name: str = self.data[self.number-1][0] + '()'
         method_info: str = self.data[self.number-1][1]
 
         print(method_name, 'Method :')
@@ -276,60 +280,30 @@ class Module(ModuleC):
 
     def all_info(self) -> None:
         '''Returns All Methods Under the Module along with their information.'''
+        print(X)
+        self.module_info()
+        print(X)
+        self.methods_list()
+        print(X)
+        
         methods_all = tuple(map(lambda a: self.method_info_(a), range(1, len(self.data)+1)))
         print(methods_all[:-len(self.data)])
-
-    def export_info(self) -> None:
-        '''To create a file with filename entered by the user.
-        
-        A file containing info about the Module and it's Methods.
-        '''
-        x = '\n', ':'*50, '\n'
-        a = 'self.module_info()'
-        b = 'self.all_info()' 
-
-        module_info = self.print_output(a)
-        methods_info = self.print_output(b)
-        methods_list = '\n'.join([i[0] for i in self.data])
-
-        file = input('Enter New File name :')
-        with open(f'{file}.txt', 'w') as f :
-            f.writelines(x)
-            f.write(f'{self.Name} Module')
-            f.writelines(x)
-            f.write(module_info)
-            f.write('\n')
-            f.writelines(x)
-            f.write(f'{self.Name} Module Methods :')
-            f.write('\n\n')
-            f.write(methods_list)
-            f.write('\n')
-            f.writelines(x)
-            f.write('Methods Info :')
-            f.write('\n\n')
-            f.write(methods_info)
-
-        print(f'Created File : {file}.txt Successfully!')
 
     def run(self) -> None:
         '''Run'''
         while True:
-            print(BLUE)
-            print(X)
-            print(f'Get {self.Name} Module Info')
-            print(X)
-            print(CYAN)
+            self.intro()
             print(f' 1 : {self.Name} Module info          \
                   \n 2 : Method List                      \
-                  \n 3 : Method Info                      \
-                  \n 4 : Get All Methods Info             \
+                  \n 3 : Methods Info                     \
+                  \n 4 : All Info                         \
                   \n 5 : Export All Info To a Text File   \
                   \n 6 : Exit \n')
 
             input_ = input('Enter Number : ')
             print(X)
 
-            if all(x.isdigit() for x in input_) is False:
+            if all(i.isdigit() for i in input_) is False:
                 print(RED)
                 print('***Please Enter In Number Format***')
 
