@@ -7,11 +7,10 @@ Making individual module objects to include their respective data used for makin
 #? FOR TIME MODULE :
 import math
 import time
-time_methods = tuple(dir(time))
+time_methods = tuple(dir(time)[6:])
 
 from time import *
-from time import _STRUCT_TM_ITEMS as y
-time_methods_info = (y.__doc__, time.__doc__.__doc__, __loader__.__doc__, __name__.__doc__, __package__.__doc__, __spec__.__doc__, altzone.__doc__, asctime.__doc__, ctime.__doc__, daylight.__doc__, get_clock_info.__doc__, gmtime.__doc__, localtime.__doc__, mktime.__doc__, monotonic.__doc__, monotonic_ns.__doc__, perf_counter.__doc__, perf_counter_ns.__doc__, process_time.__doc__, process_time_ns.__doc__, sleep.__doc__, strftime.__doc__, strptime.__doc__, struct_time.__doc__, thread_time.__doc__, thread_time_ns.__doc__, time.__doc__, time_ns.__doc__, timezone.__doc__, tzname.__doc__)
+time_methods_info = (altzone.__doc__, asctime.__doc__, ctime.__doc__, daylight.__doc__, get_clock_info.__doc__, gmtime.__doc__, localtime.__doc__, mktime.__doc__, monotonic.__doc__, monotonic_ns.__doc__, perf_counter.__doc__, perf_counter_ns.__doc__, process_time.__doc__, process_time_ns.__doc__, sleep.__doc__, strftime.__doc__, strptime.__doc__, struct_time.__doc__, thread_time.__doc__, thread_time_ns.__doc__, time.__doc__, time_ns.__doc__, timezone.__doc__, tzname.__doc__)
 
 a = zip(time_methods, time_methods_info)
 TIME_DATA = tuple(a)
@@ -109,9 +108,7 @@ collections_all_classes_list = tuple(collections.__all__)
 
 from collections import *
 collections_all_classes_info = (ChainMap.__doc__,Counter.__doc__,OrderedDict.__doc__,UserDict.__doc__,UserList.__doc__,UserString.__doc__,defaultdict.__doc__,deque.__doc__,collections.namedtuple.__doc__)
-
 collections_all_classes_methods_list = [chainmap_methods_,counter_methods_,orderdict_methods_,userdict_methods_,userlist_methods_,userstring_methods_,defaultdict_methods_,deque_methods_ ,[]]
-
 collections_all_classes_methods_info = [chainmap_methods_info,counter_methods_info,orderdict_methods_info,userdict_methods_info,userlist_methods_info,userstring_methods_info,defaultdict_methods_info,deque_methods_info ,[]]
 
 a = zip(collections_all_classes_list, collections_all_classes_info, collections_all_classes_methods_list, collections_all_classes_methods_info)
@@ -236,42 +233,34 @@ class time_:
 import datetime 
 
 from datetime import date
-datetime_date_info = (date.ctime.__doc__,date.day.__doc__,date.fromisocalendar.__doc__,date.fromisoformat.__doc__,date.fromordinal.__doc__,date.fromtimestamp.__doc__,date.isocalendar.__doc__,date.isoformat.__doc__,date.isoweekday.__doc__,date.max.__doc__,date.min.__doc__,date.month.__doc__,date.replace.__doc__,date.resolution.__doc__,date.strftime.__doc__,date.timetuple.__doc__,date.today.__doc__,date.toordinal.__doc__,date.weekday.__doc__,date.year.__doc__) 
+date_info = (date.ctime.__doc__,date.day.__doc__,date.fromisocalendar.__doc__,date.fromisoformat.__doc__,date.fromordinal.__doc__,date.fromtimestamp.__doc__,date.isocalendar.__doc__,date.isoformat.__doc__,date.isoweekday.__doc__,date.max.__doc__,date.min.__doc__,date.month.__doc__,date.replace.__doc__,date.resolution.__doc__,date.strftime.__doc__,date.timetuple.__doc__,date.today.__doc__,date.toordinal.__doc__,date.weekday.__doc__,date.year.__doc__) 
 
 from datetime import datetime
-datetime_datetime_info = (datetime.astimezone.__doc__,datetime.combine.__doc__,datetime.ctime.__doc__,datetime.date.__doc__,datetime.day.__doc__,datetime.dst.__doc__,datetime.fold.__doc__,datetime.fromisocalendar.__doc__,datetime.fromisoformat.__doc__,datetime.fromordinal.__doc__,datetime.fromtimestamp.__doc__,datetime.hour.__doc__,datetime.isocalendar.__doc__,datetime.isoformat.__doc__,datetime.isoweekday.__doc__,datetime.max.__doc__,datetime.microsecond.__doc__,datetime.min.__doc__,datetime.minute.__doc__,datetime.month.__doc__,datetime.now.__doc__,datetime.replace.__doc__,datetime.resolution.__doc__,datetime.second.__doc__,datetime.strftime.__doc__,datetime.strptime.__doc__,datetime.time.__doc__,datetime.timestamp.__doc__,datetime.timetuple.__doc__,datetime.timetz.__doc__,datetime.today.__doc__,datetime.toordinal.__doc__,datetime.tzinfo.__doc__,datetime.tzname.__doc__,datetime.utcfromtimestamp.__doc__,datetime.utcnow.__doc__,datetime.utcoffset.__doc__,datetime.utctimetuple.__doc__,datetime.weekday.__doc__,datetime.year.__doc__)
+datetime_info = (datetime.astimezone.__doc__,datetime.combine.__doc__,datetime.ctime.__doc__,datetime.date.__doc__,datetime.day.__doc__,datetime.dst.__doc__,datetime.fold.__doc__,datetime.fromisocalendar.__doc__,datetime.fromisoformat.__doc__,datetime.fromordinal.__doc__,datetime.fromtimestamp.__doc__,datetime.hour.__doc__,datetime.isocalendar.__doc__,datetime.isoformat.__doc__,datetime.isoweekday.__doc__,datetime.max.__doc__,datetime.microsecond.__doc__,datetime.min.__doc__,datetime.minute.__doc__,datetime.month.__doc__,datetime.now.__doc__,datetime.replace.__doc__,datetime.resolution.__doc__,datetime.second.__doc__,datetime.strftime.__doc__,datetime.strptime.__doc__,datetime.time.__doc__,datetime.timestamp.__doc__,datetime.timetuple.__doc__,datetime.timetz.__doc__,datetime.today.__doc__,datetime.toordinal.__doc__,datetime.tzinfo.__doc__,datetime.tzname.__doc__,datetime.utcfromtimestamp.__doc__,datetime.utcnow.__doc__,datetime.utcoffset.__doc__,datetime.utctimetuple.__doc__,datetime.weekday.__doc__,datetime.year.__doc__)
 
 from datetime import time
-datetime_time_info = (time.dst.__doc__,time.fold.__doc__,time.fromisoformat.__doc__,time.hour.__doc__,time.isoformat.__doc__,time.max.__doc__,time.microsecond.__doc__,time.min.__doc__,time.minute.__doc__,time.replace.__doc__,time.resolution.__doc__,time.second.__doc__,time.strftime.__doc__,time.tzinfo.__doc__,time.tzname.__doc__,time.utcoffset.__doc__)
+time_info = (time.dst.__doc__,time.fold.__doc__,time.fromisoformat.__doc__,time.hour.__doc__,time.isoformat.__doc__,time.max.__doc__,time.microsecond.__doc__,time.min.__doc__,time.minute.__doc__,time.replace.__doc__,time.resolution.__doc__,time.second.__doc__,time.strftime.__doc__,time.tzinfo.__doc__,time.tzname.__doc__,time.utcoffset.__doc__)
 
 from datetime import timedelta
-datetime_timedelta_info = (timedelta.days.__doc__,timedelta.max.__doc__,timedelta.microseconds.__doc__,timedelta.min.__doc__,timedelta.resolution.__doc__,timedelta.seconds.__doc__,timedelta.total_seconds.__doc__)
+timedelta_info = (timedelta.days.__doc__,timedelta.max.__doc__,timedelta.microseconds.__doc__,timedelta.min.__doc__,timedelta.resolution.__doc__,timedelta.seconds.__doc__,timedelta.total_seconds.__doc__)
 
-datetime_tzinfo_info = (tzinfo_.dst.__doc__,tzinfo_.fromutc.__doc__,tzinfo_.tzname.__doc__,tzinfo_.utcoffset.__doc__)
+tzinfo_info = (tzinfo_.dst.__doc__,tzinfo_.fromutc.__doc__,tzinfo_.tzname.__doc__,tzinfo_.utcoffset.__doc__)
 
 from datetime import timezone
-datetime_timezone_info = (timezone_.dst.__doc__,timezone_.fromutc.__doc__,timezone.max.__doc__,timezone.min.__doc__,timezone_.tzname.__doc__,timezone.utc.__doc__,timezone_.utcoffset.__doc__)
+timezone_info = (timezone_.dst.__doc__,timezone_.fromutc.__doc__,timezone.max.__doc__,timezone.min.__doc__,timezone_.tzname.__doc__,timezone.utc.__doc__,timezone_.utcoffset.__doc__)
 
-datetime_date_list = ('ctime','day','fromisocalendar','fromisoformat','fromordinal','fromtimestamp','isocalendar','isoformat','isoweekday','max','min','month','replace','resolution','strftime','timetuple','today','toordinal','weekday','year') 
-
-datetime_datetime_list = ('astimezone','combine','ctime','date','day','dst','fold','fromisocalendar','fromisoformat','fromordinal','fromtimestamp','hour','isocalendar','isoformat','isoweekday','max','microsecond','min','minute','month','now','replace','resolution','second','strftime','strptime','time','timestamp','timetuple','timetz','today','toordinal','tzinfo','tzname','utcfromtimestamp','utcnow','utcoffset','utctimetuple','weekday','year')
-
-datetime_time_list = ('dst','fold','fromisoformat','hour','isoformat','max','microsecond','min','minute','replace','resolution','second','strftime','tzinfo','tzname','utcoffset')
-
-datetime_timedelta_list = ('days','max','microseconds','min','resolution','seconds','total_seconds')
-
-datetime_tzinfo_list = ('dst','fromutc','tzname','utcoffset')
-
-datetime_timezone_list = ('dst','fromutc','max','min','tzname','utc','utcoffset')
+date_methods = ('ctime','day','fromisocalendar','fromisoformat','fromordinal','fromtimestamp','isocalendar','isoformat','isoweekday','max','min','month','replace','resolution','strftime','timetuple','today','toordinal','weekday','year') 
+datetime_methods = ('astimezone','combine','ctime','date','day','dst','fold','fromisocalendar','fromisoformat','fromordinal','fromtimestamp','hour','isocalendar','isoformat','isoweekday','max','microsecond','min','minute','month','now','replace','resolution','second','strftime','strptime','time','timestamp','timetuple','timetz','today','toordinal','tzinfo','tzname','utcfromtimestamp','utcnow','utcoffset','utctimetuple','weekday','year')
+time_methods = ('dst','fold','fromisoformat','hour','isoformat','max','microsecond','min','minute','replace','resolution','second','strftime','tzinfo','tzname','utcoffset')
+timedelta_methods = ('days','max','microseconds','min','resolution','seconds','total_seconds')
+tzinfo_methods = ('dst','fromutc','tzname','utcoffset')
+timezone_methods = ('dst','fromutc','max','min','tzname','utc','utcoffset')
 
 import datetime
 datetime_all_classes_list = tuple(datetime.__all__)
-
 datetime_all_classes_info = (date_.__doc__,datetime.datetime.__doc__,time_.__doc__,timedelta_.__doc__,timezone_.__doc__,tzinfo_.__doc__,datetime.MINYEAR,datetime.MAXYEAR)
-
-datetime_all_classes_methods_list = (datetime_date_list,datetime_datetime_list,datetime_time_list,datetime_timedelta_list,datetime_timezone_list,datetime_tzinfo_list,[],[])
-
-datetime_all_classes_methods_info = (datetime_date_info,datetime_datetime_info,datetime_time_info,datetime_timedelta_info,datetime_timezone_info,datetime_tzinfo_info,[],[])
+datetime_all_classes_methods_list = (date_methods,datetime_methods,time_methods,timedelta_methods,timezone_methods,tzinfo_methods,[],[])
+datetime_all_classes_methods_info = (date_info,datetime_info,time_info,timedelta_info,timezone_info,tzinfo_info,[],[])
 
 a = zip(datetime_all_classes_list, datetime_all_classes_info, datetime_all_classes_methods_list, datetime_all_classes_methods_info)
 DATETIME_DATA = tuple(a)
