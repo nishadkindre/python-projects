@@ -1,24 +1,28 @@
 '''To construct Individual module objects in order to display their data.'''
 
-from textstyle import *
 X = ':'*30
+RED = '\033[1;31m'
+BLUE = '\033[1;34m'
+PINK = '\033[1;35m'
+CYAN = '\033[1;36m'
+GREEN = '\033[1;32m'
 
 #? Constructing a class used to create module info objects with it. 
 class ModuleC:
     '''Constructing a 'ModuleC' class 
     
     >>> With methods defined under it to return the data about the module,classes under it,methods under the classes.
-    >>> Using a combine object(preferably a zip object) containing all the data to be returned using the methods hereby defined.
+    >>> Using a combine object(preferably a zip object converted to a tuple) containing all the data to be returned using the methods hereby defined.
     '''
 
-    def __init__(self, name: str, data: object) -> None:
-        '''Necessary to give the module name and the module data during object instantiation.'''
+    def __init__(self, name: str, data: tuple) -> None:
+        '''Necessary to define the module name and the module data during object instantiation.'''
         self.name = name
         self.Name = name.capitalize()
         self.data = data
 
     def module_info(self) -> None:
-        f'''Returns the information about the {self.Name} Module.'''
+        '''Returns the information about the Module.'''
         print(f'{self.Name} Module Info :')
         print('\n')
         exec(f'import {self.name}\
@@ -62,18 +66,17 @@ class ModuleC:
             print('***Please Enter Number within range***')
 
     def class_methods_list(self) -> int:
-        '''Returns All the Methods Under specific Class of the Module.'''
+        '''Returns All the Methods Under Specific Class of the Module.'''
         
         # refer : https://devnote.in/how-to-call-one-method-from-another-within-the-same-class-in-python/
         self.classes_list()
         b: int = self.class_info()
         class_name: str = self.data[b-1][0]
         class_methods: tuple = self.data[b-1][2]
-
         try:         
             print(X)
             print(f'Methods under Class {class_name} :')
-            for y, z in enumerate(class_methods, 1) : 
+            for y, z in enumerate(class_methods, 1): 
                 print(y, z)
 
         except Exception:
@@ -94,7 +97,6 @@ class ModuleC:
             number = input()
             d = int(number)
             print(X)
-
             method_name: str = self.data[c-1][2][d-1]
             method_info: str = methods_info_list[d-1]
             methods_info_list: tuple = self.data[c-1][3]
@@ -225,7 +227,6 @@ class ModuleC:
                 print('***Please Enter Number within range***')    
 
 #? A Class For modules with only methods.
-
 class Module(ModuleC):
     '''Constructing a 'Module' class. 
     
@@ -280,14 +281,14 @@ class Module(ModuleC):
 
     def all_info(self) -> None:
         '''Returns All Methods Under the Module along with their information.'''
+        all_methods_info = tuple(map(lambda a: self.method_info_(a), range(1, len(self.data)+1)))
+        
         print(X)
         self.module_info()
         print(X)
         self.methods_list()
         print(X)
-        
-        methods_all = tuple(map(lambda a: self.method_info_(a), range(1, len(self.data)+1)))
-        print(methods_all[:-len(self.data)])
+        print(all_methods_info[:-len(self.data)])
 
     def run(self) -> None:
         '''Run'''
