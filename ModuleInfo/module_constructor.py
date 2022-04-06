@@ -11,12 +11,19 @@ GREEN = '\033[1;32m'
 class ModuleC:
     '''Constructing a 'ModuleC' class 
     
-    >>> With methods defined under it to return the data about the module,classes under it,methods under the classes.
-    >>> Using a combine object(preferably a zip object converted to a tuple) containing all the data to be returned using the methods hereby defined.
+    With methods defined under it to return the data about the 
+    module, classes under it, methods under the classes, all info, export info
+    
+    Using a combine object(preferably a zip object converted to a tuple)
+    containing all the data to be returned using the methods hereby defined.
     '''
 
-    def __init__(self, name: str, data: tuple) -> None:
-        '''Necessary to define the module name and the module data during object instantiation.'''
+    def __init__(self, name: str, data:  tuple) -> None:
+        '''Necessary to define the module name and module data during object instantiation.
+        
+        param name: str, name of the module
+        param data: tuple, a tuple object(containing the data) of the module to be created 
+        '''
         self.name = name
         self.Name = name.capitalize()
         self.data = data
@@ -138,13 +145,13 @@ class ModuleC:
                 print(method_info, '\n')
             print(X)
 
-    def print_output(self, input_: str = 'self.all_info()') -> str:  # function returns a str value , deafault parameter = 'self.all_info()'
+    def print_output(self, input_: str = 'self.all_info()') -> str:  # returns a str value , default parameter = 'self.all_info()'
         '''Helper Method.
 
-        >>> Return the output of an input(a function in our case) taken as an argument.
-        >>> For special purpose of printing output in a text file.
+        Return the output of an input(a function in our case) taken as an argument.
+        For special purpose of printing output in a text file.
 
-        Special Method made for use in the export_info().
+        Special Method for use in export_info() method.
         '''
         import io
         import sys
@@ -161,7 +168,7 @@ class ModuleC:
     def export_info(self) -> None:
         '''To create a file with filename entered by the user.
         
-        A file containing info about the  Module and it's Methods.
+        A file containing info about the Module and it's Methods.
         '''       
         all_info = self.print_output()
         file = input('Enter New File name :')
@@ -230,13 +237,14 @@ class ModuleC:
 class Module(ModuleC):
     '''Constructing a 'Module' class. 
     
-    >>> With methods defined under it to return the data about the module,and the methods under it.
-    >>> Using a combine object(preferably a zip object) containing all the data to be returned using the methods hereby defined.
+    With methods defined under it to return the data about the module,and the methods under it.
+    Using a combine object(preferably a zip object converted to a tuple) 
+    containing all the data to be returned using the methods hereby defined.
     
     Inherited Methods from ModuleC:
-    >>> module_info()
-    >>> export_info()
-    >>> intro()
+    module_info()
+    export_info()
+    intro()
     '''
     def methods_list(self) -> None:
         '''Returns All The Methods defined under the Module In a Systematic manner.'''
@@ -247,10 +255,10 @@ class Module(ModuleC):
     def method_info_(self, number: int) -> None:
         '''Helper Method.
 
-        >>> Returns the information about the specific Module method.
-        >>> Using the input number given by the user as an argument while calling the function.
+        Returns the information about the specific Module method.
+        Using the input number given by the user as an argument while calling the function.
 
-        Special Method made for use in the method_info() & all_info() method.
+        Special Method for use in method_info() & all_info() method.
         '''
         x: str = '\n' + '-'*50
         self.number = number
