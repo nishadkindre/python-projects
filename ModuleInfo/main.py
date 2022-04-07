@@ -5,7 +5,7 @@ def run_module(num: str):
     module = (time, pandas, schedule, os, numpy, random, math, datetime, collection)
     try :
         return module[number-1].run()
-    except Exception :
+    except IndexError :
         print(RED)
         print('***Please Enter Number within range***')    
 
