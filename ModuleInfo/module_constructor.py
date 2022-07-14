@@ -197,7 +197,7 @@ class ModuleC:
             input_ = input('Enter Number : ')  
             print(X)
 
-            if all(x.isdigit() for x in input_) is False:
+            if input_.isdigit() == False:
                 print(RED)
                 print('***Please Enter In Number Format***')
 
@@ -313,7 +313,7 @@ class Module(ModuleC):
             input_ = input('Enter Number : ')
             print(X)
 
-            if all(i.isdigit() for i in input_) is False:
+            if input_.isdigit() == False:
                 print(RED)
                 print('***Please Enter In Number Format***')
 
